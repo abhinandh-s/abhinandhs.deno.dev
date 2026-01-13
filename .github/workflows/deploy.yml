@@ -33,8 +33,6 @@ jobs:
         with:
           # This ensures the cache is tied to your Cargo.lock
           shared-key: "yew-github-pages"
-          # Additional non workspace directories to be cached, separated by newlines.
-          cache-directories: "dist"
 
       - name: Install latest stable
         uses: actions-rs/toolchain@v1
@@ -56,7 +54,7 @@ jobs:
           version: 'latest'
 
       - name: Build with Trunk
-        run: trunk build --release --public-url "/" && ls -la
+        run: trunk build --release --public-url "/" && ls
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

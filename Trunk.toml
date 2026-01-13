@@ -3,4 +3,4 @@ dist = "dist"
 jobs = 1 
 
 [serve]
-port = 8080
+port = 8081

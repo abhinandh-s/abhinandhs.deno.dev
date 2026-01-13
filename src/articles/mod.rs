@@ -7,7 +7,7 @@ use pulldown_cmark::{Parser, html};
 use serde::{Deserialize, Serialize};
 use walkdir::{DirEntry, WalkDir};
 
-// mod generated;
+mod generated;
 
 #[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Article {
@@ -26,35 +26,17 @@ pub struct FrontMatter {
     pub tags: Option<Vec<String>>,
 }
 
-const POST_01: &str = include_str!("post-01.md");
-const POST: &str = "---
-title: Hello World
-published_at: 2026-01-12
-updated_at: 2026-01-12
-snippet: snippet for this post
----
-# This is post 01
-
-this is some para
-";
-
-pub const ARTICLES: &[(&str, &str)] = &[
-    ("post-01", POST),
-   // ("post-02", include_str!("post-02.md")),
-   // ("post-03", include_str!("post-03.md")),
-];
-
 #[allow(clippy::vec_init_then_push)]
 pub fn get_all_articles() -> Vec<Article> {
     let mut articles = Vec::new();
     let mut dbg = String::new();
 
-    for (id, ctx) in ARTICLES {
+    for (id, ctx) in generated::ARTICLES.to_owned() {
         let matter = gray_matter::Matter::<gray_matter::engine::YAML>::new();
         match matter.parse::<FrontMatter>(ctx) {
             Ok(result) => {
                 articles.push(Article {
-                    id: id.to_string(),
+                    id: id.to_owned(),
                     matter: result.data.unwrap_or_default(),
                     content: result.content,
                 });
@@ -62,6 +44,7 @@ pub fn get_all_articles() -> Vec<Article> {
             Err(err) => dbg.push_str(err.to_string().as_str()),
         }
     }
+
 
     articles.push(Article {
         id: "post".into(),
