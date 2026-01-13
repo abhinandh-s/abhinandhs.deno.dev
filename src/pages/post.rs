@@ -22,7 +22,27 @@ pub fn article_entry(props: &ArticleProps) -> Html {
                 </li>
             }
         }
-        None => todo!(),
+        None => html!(),
+    }
+}
+
+#[function_component(ArticleEntryWithDate)]
+pub fn article_entry_with_date(props: &ArticleProps) -> Html {
+    match get_article_by_id(&props.post_id) {
+        Some(article) => {
+            html! {
+                <li class="border-t py-2">
+                    <a href={format!("/#/articles/{}", article.id)} class="py-2 flex group gap-4">
+                    <div> { article.matter.published_at } </div>
+                    <div>
+                        <h2 class="font-bold group-hover:underline">{ article.matter.title }</h2>
+                        <p class="text-gray-600"> { article.matter.snippet } </p>
+                    </div>
+                    </a>
+                </li>
+            }
+        }
+        None => html!(),
     }
 }
 

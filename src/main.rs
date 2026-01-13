@@ -37,5 +37,6 @@ fn switch(routes: Route) -> Html {
             }
         }
         Route::Articles { id } => html! { <Article post_id={id} /> },
+        Route::ArticlesRoute => {},
     }
 }

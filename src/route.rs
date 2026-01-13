@@ -4,6 +4,8 @@ use yew_router::prelude::*;
 pub enum Route {
     #[at("/")]
     Home,
+    #[at("/articles")]
+    ArticlesRoute,
     #[at("/articles/:id")]
     Articles { id: String },
     #[not_found]
