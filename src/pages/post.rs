@@ -30,8 +30,7 @@ pub fn article_entry(props: &ArticleProps) -> Html {
 pub fn article_entry_with_date(props: &ArticleProps) -> Html {
     match get_article_by_id(&props.post_id) {
         Some(article) => {
-            let org = article.matter.published_at;
-            let date = get_date(org.clone().as_str(), true);
+            let date = get_date(article.matter.published_at.as_str(), false);
 
             html! {
               <li class="border-t py-2">
@@ -52,22 +51,21 @@ pub fn article_entry_with_date(props: &ArticleProps) -> Html {
 #[function_component(ArticleIndex)]
 pub fn article_index() -> Html {
     html! {
-                    <div class="p-4 mx-auto max-w-3xl flex flex-col justify-center">
-          <ul class="mt-8">
-                  {
-                    for crate::articles::get_all_articles().into_iter().map(|articles| {
-                        html! { <ArticleEntryWithDate post_id={articles.id} /> }
-                    })
-                  }
-                  </ul>
-                    </div>
-
+      <div class="p-4 mx-auto max-w-3xl flex flex-col justify-center">
+        <ul class="mt-8">
+          {
+            for crate::articles::get_all_articles().into_iter().map(|articles| {
+              html! { <ArticleEntryWithDate post_id={articles.id} /> }
+            })
+          }
+        </ul>
+      </div>
     }
 }
+
 #[function_component(Article)]
 pub fn article(props: &ArticleProps) -> Html {
-    let post = get_article_by_id(&props.post_id);
-    match post {
+    match get_article_by_id(&props.post_id) {
         Some(post) => {
             let html_content = markdown_to_html(&post.content);
             let ctx = Html::from_html_unchecked(html_content.into());
@@ -75,34 +73,22 @@ pub fn article(props: &ArticleProps) -> Html {
             let date = get_date(org.clone().as_str(), true);
 
             html! {
-                <>
-                    <crate::pages::home::Header />
-                    <div class="p-4 mx-auto max-w-3xl flex flex-col justify-center">
-                    <h1 class="font-bold mt-12">{ date }</h1>
-                    <h1 class="font-bold text-5xl mt-2">{ post.matter.title }</h1>
-                    <div>
+              <>
+                <crate::pages::home::Header />
 
-                    <div class="markdown-body mt-12">
+                <div class="p-4 mx-auto max-w-3xl flex flex-col justify-center">
+                  <h1 class="font-bold mt-12">{ date }</h1>
+                  <h1 class="font-bold text-5xl mt-2">{ post.matter.title }</h1>
+
+                  <div class="markdown-body mt-12">
                     { ctx }
-                    </div>
-                    </div>
-                    <crate::pages::home::Footer />
-                    </div>
-                </>
+                  </div>
+
+                  <crate::pages::home::Footer />
+                </div>
+              </>
             }
         }
-        None => {
-            html!(
-            <>
-                             <h1 class="text-4xl font-bold"> { "404 - Page not found" }</h1>
-                 <p class="my-4">
-                 { "The page you were looking for doesn't exist." }
-                 </p>
-                 <a href="/" class="underline">{ "Go back home" }</a>
-
-                       </>
-
-                   )
-        }
+        None => html! { <crate::pages::_404::NotFound /> },
     }
 }
