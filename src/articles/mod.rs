@@ -52,6 +52,14 @@ pub fn get_all_articles_sorted() -> Vec<Article> {
     articles
 }
 
+// For home page
+pub fn get_recently_add(limit: usize) -> Vec<Article> {
+    get_all_articles_sorted()
+        .into_iter()
+        .take(limit)
+        .collect()
+}
+
 // input: `2026-01-12 21:34`
 // return it as [`Monday, November 25, 2024`]
 pub fn get_date(input: &str, long: bool) -> String {
