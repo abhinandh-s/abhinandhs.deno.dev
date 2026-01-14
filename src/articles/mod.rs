@@ -89,7 +89,7 @@ InspiredGitHub from here
 Solarized (dark) and Solarized (light)
  */
 pub fn markdown_to_html(source: &str) -> String {
-    let adapter = SyntectAdapterBuilder::new().theme("base16-mocha.dark").build();
+    let adapter = SyntectAdapterBuilder::new().theme("base16-ocean.dark").build();
     let options = comrak::Options::default();
     let mut plugins = comrak::options::Plugins::default();
 
