@@ -104,7 +104,7 @@ pub fn footer() -> Html {
           {"and is available"} {" "}
           <a
             class="text-just-red"
-            href="https://github.com/abhinandh-1s/abhinandhs.in"
+            href="https://github.com/abhinandh-s/abhinandh-s.github.io"
             target="_blank"
           >
           { "here" }
