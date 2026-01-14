@@ -87,12 +87,12 @@ pub fn footer() -> Html {
         { "This site is built with the " }
           <a
             class="text-just-red"
-            href="https://fresh.deno.dev"
+            href="https://yew.rs"
             target="_blank"
           >
-          { "Fresh"}
+          { "Yew"}
           </a>{" "}
-          { "framework on Deno. The website’s source code is licensed under the"}
+          { "framework. The website’s source code is licensed under the"}
           {" "}
           <a
             class="text-just-red"
@@ -104,7 +104,7 @@ pub fn footer() -> Html {
           {"and is available"} {" "}
           <a
             class="text-just-red"
-            href="https://github.com/abhi-xyz/abhinandhs.in"
+            href="https://github.com/abhinandh-1s/abhinandhs.in"
             target="_blank"
           >
           { "here" }
