@@ -18,7 +18,7 @@ pub fn article_entry_with_date(props: &ArticleProps) -> Html {
             html! {
               <li class="border-t border-mocha-mantle dark:text-mocha-surface2 py-2">
                 <a href={format!("/#/articles/{}", article.id)} class="py-2 flex group gap-4">
-                <div class="min-w-24"> { date } </div>
+                <div class="w-24 shrink-0"> { date } </div>
                   <div>
                     <h2 class="font-bold group-hover:underline">{ article.matter.title }</h2>
                     <p class="text-gray-600"> { article.matter.snippet } </p>
@@ -53,6 +53,9 @@ pub fn article_index() -> Html {
     }
 }
 
+// https://abhinandh-s.github.io/#/articles/:post 
+//                                            ^
+//                                            this page
 #[function_component(Article)]
 pub fn article(props: &ArticleProps) -> Html {
     match get_article_by_id(&props.post_id) {

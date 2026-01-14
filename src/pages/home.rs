@@ -14,7 +14,7 @@ pub fn home_page() -> Html {
                  id="wrapper"
                  class="p-2 mx-auto max-w-3xl flex flex-col justify-center">
                     <h1 class="max-tablet:text-2xl text-4xl">{ "Hello, I'am" }</h1>
-                    <h1 class="max-tablet:text-4xl text-6xl font-extrabold font-mordern">
+                    <h1 class="max-tablet:text-5xl text-6xl font-extrabold">
                     {"Abhinandh S"}
                     <span class="text-just-red">{"."}</span>
                     </h1>
