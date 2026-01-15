@@ -20,7 +20,7 @@ pub fn home_page() -> Html {
              <span class="text-just-red">{"."}</span>
            </h1>
            <h1 class="pt-8 text-2xl font-sans font-bold">{ "Welcome to my corner of Internet"}<span class="text-just-red">{"."}</span></h1>
-           <h1 class="border-l-4 border-l-just-red pl-4 font-bold max-tablet:text-3xl text-4xl mt-12 mb-2">{ "About Me" }<span class="text-just-red">{"."}</span></h1>
+           <h1 class="border-l-4 border-l-just-red pl-4 font-bold max-tablet:text-3xl text-4xl mt-12">{ "About Me" }<span class="text-just-red">{"."}</span></h1>
            <br />
            <p>{ format!("I am a {AGE}-years-old guy from India. {ABOUT_ME}") }</p>
            <h1 class="border-l-4 border-l-just-red pl-4 font-bold max-tablet:text-3xl text-4xl mt-12">{ "Recent Posts"}<span class="text-just-red">{ "." }</span></h1>
