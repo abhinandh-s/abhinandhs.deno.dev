@@ -9,7 +9,7 @@ Congrats! You’ve finally bought yourself a domain, and now you're ready to
 connect it to your GitHub Pages website. This guide will walk you through the
 steps to set up your GoDaddy domain with GitHub Pages.
 
-## Step 1: Configuring GitHub Pages
+# Step 1: Configuring GitHub Pages
 
 First, ensure that your repository name follows the required naming convention
 for GitHub Pages ie, your repository name must be your-username.github.io.
@@ -18,7 +18,7 @@ mine is: https://github.com/abhi-xyz/abhi-xyz.github.io
 
 Once your repository is ready, navigate to the repository’s Settings.
 
-### Enable GitHub Pages
+## Enable GitHub Pages
 
 1. Go to the Settings of your repository.
 2. Scroll down to the Code and Automation section and select Pages.
@@ -29,19 +29,19 @@ Once your repository is ready, navigate to the repository’s Settings.
 5. Save the changes, and GitHub will start serving your site from
    your-username.github.io.
 
-## Step 2: Setting Up DNS Records in GoDaddy
+# Step 2: Setting Up DNS Records in GoDaddy
 
 Now that your GitHub Pages site is live, the next step is to point your custom
 GoDaddy domain to GitHub Pages.
 
-### Add DNS Records in GoDaddy
+## Add DNS Records in GoDaddy
 
 1. Log in to your [GoDaddy account](https://www.godaddy.com/).
 2. Under **My Products**, find your domain and click DNS to manage its DNS
    settings.
 3. Add the following entries in the DNS management settings:
 
-![add these entries in GoDaddy's DNS management settings](/assets/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/01-godaddy-dns-management.avif)
+![add these entries in GoDaddy's DNS management settings](/static/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/01-godaddy-dns-management.avif)
 
 - Type: A
 - Name: @
@@ -64,29 +64,29 @@ GoDaddy domain to GitHub Pages.
 
 Save the changes.
 
-## Step 3: Configuring a Custom Domain in GitHub Pages
+# Step 3: Configuring a Custom Domain in GitHub Pages
 
 Once you’ve set up the DNS records in GoDaddy, go back to your GitHub
 repository.
 
 Head to Settings > Pages.
 
-![github-pages](/assets/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/01-github-pages.avif)
+![github-pages](/static/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/01-github-pages.avif)
 
 Scroll down to the Custom Domain section.
 
-![github-pages settings](/assets/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/01-github-pages-settings.avif)
+![github-pages settings](/static/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/01-github-pages-settings.avif)
 
 Enter your GoDaddy domain (e.g., yourdomain.com) in the field. GitHub will
 automatically create a CNAME file in the root directory of your repository. This
 file tells GitHub that your website is linked to this custom domain.
 
-![generated CNAME file in root](/assets/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/01-docs-folder.avif)
+![generated CNAME file in root](/static/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/01-docs-folder.avif)
 
 After adding the domain, GitHub Pages will take a few minutes to process the
 changes.
 
-## Step 4: Check SSL/TLS and HTTPS
+# Step 4: Check SSL/TLS and HTTPS
 
 After configuring your custom domain, it's crucial to ensure that your website
 is served securely over HTTPS. GitHub Pages offers built-in support for HTTPS
@@ -104,7 +104,7 @@ GitHub is working with Let's Encrypt to issue your SSL certificate. You may need
 to refresh the page after some time if the Enforce HTTPS option is disabled at
 first.
 
-![TLS certificate provisioned](/assets/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/tls_provisioned.avif)
+![TLS certificate provisioned](/static/articles/how-to-set-up-GoDaddy-domain-with-gitHub-pages/tls_provisioned.avif)
 
 ## Why HTTPS Matters
 
