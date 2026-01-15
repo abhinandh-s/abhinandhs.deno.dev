@@ -47,7 +47,7 @@ pub fn footer() -> Html {
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
           </a>
-          <a class="p-2" href="/feed.atom" target="_blank">
+          <a class="p-2" href="/feed.json" target="_blank">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
