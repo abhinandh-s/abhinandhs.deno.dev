@@ -4,3 +4,6 @@ jobs = 1
 
 [serve]
 port = 8080
+
+[[assets]]
+image = "feed.json"
