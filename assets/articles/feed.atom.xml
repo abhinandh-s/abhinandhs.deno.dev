@@ -1,19 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Abhi's Feed</title>
-    <link>https://abhinandh-s.github.io/</link>
-    <description>Json feed for articles written by Abhinandh S</description>
-    <language>en-us</language>
-    
-      <item>
-        <title><![CDATA[age.nvim]]></title>
-        <link>https://abhinandh-s.github.io/articles/age-nvim</link>
-        <guid>https://abhinandh-s.github.io/articles/age-nvim</guid>
-        <pubDate>2024-12-10T00:00:00Z</pubDate>
-        <description><![CDATA[Neovim plugin for encrypting and decrypting text files inside neovim using `age` with ease.]]></description>
-        <content:encoded><![CDATA[<p><strong>Neovim plugin for encrypting and decrypting text files inside neovim using
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Abhi's Feed</title>
+  <link href="https://abhinandh-s.github.io/"/>
+  <link href="https://abhinandh-s.github.io/atom.xml" rel="self"/>
+  <updated>2024-12-10T00:00:00Z</updated>
+  <id>https://abhinandh-s.github.io/</id>
+  
+  <entry>
+    <title>age.nvim</title>
+    <link href="https://abhinandh-s.github.io/articles/age-nvim"/>
+    <id>https://abhinandh-s.github.io/articles/age-nvim</id>
+    <updated>2024-12-10T00:00:00Z</updated>
+    <summary>Neovim plugin for encrypting and decrypting text files inside neovim using `age` with ease.</summary>
+    <content type="html"><![CDATA[<p><strong>Neovim plugin for encrypting and decrypting text files inside neovim using
 <code>age</code> with ease.</strong></p>
 <h1>Table of Contents</h1>
 <ul>
@@ -97,16 +96,16 @@ easy to manage and transfer.</li>
 efficiently, without the additional complexity of key management and email
 encryption that GPG supports.</li>
 </ol>
-]]></content:encoded>
-      </item>
+]]></content>
+  </entry>
 
-      <item>
-        <title><![CDATA[roxide]]></title>
-        <link>https://abhinandh-s.github.io/articles/roxide</link>
-        <guid>https://abhinandh-s.github.io/articles/roxide</guid>
-        <pubDate>2024-11-25T00:00:00Z</pubDate>
-        <description><![CDATA[A lightweight, high-performance alternative to the traditional rm command, written in rust.]]></description>
-        <content:encoded><![CDATA[<p><code>roxide</code> is a lightweight, high-performance alternative to the traditional <code>rm</code>
+  <entry>
+    <title>roxide</title>
+    <link href="https://abhinandh-s.github.io/articles/roxide"/>
+    <id>https://abhinandh-s.github.io/articles/roxide</id>
+    <updated>2024-11-25T00:00:00Z</updated>
+    <summary>A lightweight, high-performance alternative to the traditional rm command, written in rust.</summary>
+    <content type="html"><![CDATA[<p><code>roxide</code> is a lightweight, high-performance alternative to the traditional <code>rm</code>
 command, designed with an emphasis on speed and data preservation. Unlike
 standard rm, which permanently deletes files, roxide safely moves them to a
 designated &quot;<code>trash</code>&quot; directory. This approach enables efficient and fast file
@@ -218,16 +217,16 @@ automatically clearing files older than a specified period.</li>
 <li>~~roxide -f: Forces deletion without moving files to the trash directory.~~</li>
 <li>roxide -s: Shreds files for secure deletion.</li>
 </ul>
-]]></content:encoded>
-      </item>
+]]></content>
+  </entry>
 
-      <item>
-        <title><![CDATA[Nix Functions To Setup Newsboat Urls]]></title>
-        <link>https://abhinandh-s.github.io/articles/setting-up-newsboat-the-nix-way</link>
-        <guid>https://abhinandh-s.github.io/articles/setting-up-newsboat-the-nix-way</guid>
-        <pubDate>2024-10-22T00:00:00Z</pubDate>
-        <description><![CDATA[Setting up your newsboat configuration using Nix functions.]]></description>
-        <content:encoded><![CDATA[<p>RSS is a powerful way to stay updated with your favorite blogs, social media
+  <entry>
+    <title>Nix Functions To Setup Newsboat Urls</title>
+    <link href="https://abhinandh-s.github.io/articles/setting-up-newsboat-the-nix-way"/>
+    <id>https://abhinandh-s.github.io/articles/setting-up-newsboat-the-nix-way</id>
+    <updated>2024-10-22T00:00:00Z</updated>
+    <summary>Setting up your newsboat configuration using Nix functions.</summary>
+    <content type="html"><![CDATA[<p>RSS is a powerful way to stay updated with your favorite blogs, social media
 channels, and other online content without being distracted by endless scrolling
 on the actual platforms. <a href="https://newsboat.org/">Newsboat</a>, a terminal-based RSS
 reader, is an excellent tool for this.</p>
@@ -390,16 +389,16 @@ definition, rather than rewriting all the occurrences.</p>
 </span><span style="color:#c0c5ce;">  };
 </span><span style="color:#c0c5ce;">}
 </span></code></pre>
-]]></content:encoded>
-      </item>
+]]></content>
+  </entry>
 
-      <item>
-        <title><![CDATA[How to Set Up GoDaddy Domain With GitHub Pages]]></title>
-        <link>https://abhinandh-s.github.io/articles/how-to-set-up-godaddy-domain-with-github-pages</link>
-        <guid>https://abhinandh-s.github.io/articles/how-to-set-up-godaddy-domain-with-github-pages</guid>
-        <pubDate>2024-10-19T00:00:00Z</pubDate>
-        <description><![CDATA[How to Set Up GoDaddy Domain With GitHub Pages.]]></description>
-        <content:encoded><![CDATA[<p>Congrats! You’ve finally bought yourself a domain, and now you're ready to
+  <entry>
+    <title>How to Set Up GoDaddy Domain With GitHub Pages</title>
+    <link href="https://abhinandh-s.github.io/articles/how-to-set-up-godaddy-domain-with-github-pages"/>
+    <id>https://abhinandh-s.github.io/articles/how-to-set-up-godaddy-domain-with-github-pages</id>
+    <updated>2024-10-19T00:00:00Z</updated>
+    <summary>How to Set Up GoDaddy Domain With GitHub Pages.</summary>
+    <content type="html"><![CDATA[<p>Congrats! You’ve finally bought yourself a domain, and now you're ready to
 connect it to your GitHub Pages website. This guide will walk you through the
 steps to set up your GoDaddy domain with GitHub Pages.</p>
 <h1>Step 1: Configuring GitHub Pages</h1>
@@ -497,16 +496,16 @@ GitHub Pages site will be securely accessible through your custom GoDaddy domain
 over HTTPS.</p>
 <p>That’s it! You've successfully set up your GoDaddy domain with GitHub Pages. 🎉
 Enjoy your new, secure website!</p>
-]]></content:encoded>
-      </item>
+]]></content>
+  </entry>
 
-      <item>
-        <title><![CDATA[Hello World]]></title>
-        <link>https://abhinandh-s.github.io/articles/hello-world</link>
-        <guid>https://abhinandh-s.github.io/articles/hello-world</guid>
-        <pubDate>2024-06-26T00:00:00Z</pubDate>
-        <description><![CDATA[My first blog entry.]]></description>
-        <content:encoded><![CDATA[<h1>Hello, World!</h1>
+  <entry>
+    <title>Hello World</title>
+    <link href="https://abhinandh-s.github.io/articles/hello-world"/>
+    <id>https://abhinandh-s.github.io/articles/hello-world</id>
+    <updated>2024-06-26T00:00:00Z</updated>
+    <summary>My first blog entry.</summary>
+    <content type="html"><![CDATA[<h1>Hello, World!</h1>
 <p>published: 2024-11-01</p>
 <p>Welcome to my first blog post! This content is written in Markdown and styled
 using GitHub Flavored Markdown.</p>
@@ -522,8 +521,7 @@ using GitHub Flavored Markdown.</p>
 </span></code></pre>
 </li>
 </ul>
-]]></content:encoded>
-      </item>
+]]></content>
+  </entry>
 
-  </channel>
-</rss>
+</feed>

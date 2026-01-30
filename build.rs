@@ -58,7 +58,7 @@ fn main() {
 
     fs::write("assets/articles/feed.xml", generate_rss_feed()).unwrap();
 
-    fs::write("assets/articles/feed.atom", generate_atom_feed()).unwrap();
+    fs::write("assets/articles/feed.atom.xml", generate_atom_feed()).unwrap();
 }
 
 use serde::{Deserialize, Serialize};
@@ -147,7 +147,7 @@ pub fn get_all_articles() -> Vec<Article> {
                         .to_string_lossy()
                         .to_string(),
                     matter: result.data.unwrap_or_default(),
-                    content: result.content,
+                    content: markdown_to_html(&result.content),
                 });
             }
             Err(err) => dbg.push_str(err.to_string().as_str()),
