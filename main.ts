@@ -7,5 +7,6 @@ serve((req) =>
     urlRoot: "",
     showDirListing: false,
     enableCors: true,
+    index: "index.html",
   })
 );
