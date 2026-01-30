@@ -12,6 +12,15 @@ published: 2024-11-01
 Welcome to my first blog post! This content is written in Markdown and styled
 using GitHub Flavored Markdown.
 
+- list item 01
+- list item 02
+- list item 03
+
+> Block quote 
+
+> [!IMPORTANT]
+> This is important
+
 ```Rust
 main() {
     println!("hello world!");
