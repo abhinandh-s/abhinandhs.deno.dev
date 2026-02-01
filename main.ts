@@ -3,6 +3,8 @@ import init, { render } from "./pkg/yew_blog.js";
 
 console.log("Server running on http://localhost:8000");
 
+await init();
+
 serve(async (req) => {
   // Call the Rust function!
   const appHtml = await render();
