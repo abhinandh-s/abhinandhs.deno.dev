@@ -11,15 +11,6 @@ mod pages;
 mod route;
 mod utils;
 
-// #[function_component(App)]
-// fn app() -> Html {
-//     html!(
-//         <BrowserRouter> // `HashRouter` is needed for github pages
-//             <Switch<Route> render={switch} />
-//         </BrowserRouter>
-//     )
-// }
-
 fn switch(routes: Route) -> Html {
     match routes {
         Route::Home => html! { <pages::home::HomePage /> },
@@ -33,16 +24,27 @@ fn switch(routes: Route) -> Html {
 
 #[function_component(App)]
 fn app(props: &AppProps) -> Html {
- let history = AnyHistory::from(MemoryHistory::new());
-    history.push(props.clone().path);
-
-
-    html! {
-    
-        <Router history={history}>
-            <Switch<Route> render={switch} />
+    // 1. Logic outside the html! macro
+    let content = if !props.path.is_empty() {
+        // SERVER PATH: Use the provided path from Deno
+        let history = AnyHistory::from(MemoryHistory::new());
+        history.push(&props.path);
+        html! {
+            <Router history={history}>
+                <Switch<Route> render={switch} />
             </Router>
-    }
+        }
+    } else {
+        // BROWSER PATH: Use the URL in the address bar
+        html! {
+            <BrowserRouter>
+                <Switch<Route> render={switch} />
+            </BrowserRouter>
+        }
+    };
+
+    // 2. Return the result
+    content
 }
 
 #[derive(Clone, PartialEq, Properties)]
@@ -56,22 +58,22 @@ pub async fn render(path: String) -> String {
     renderer.render().await
 }
 
-// #[allow(clippy::enum_variant_names)]
-// #[derive(Clone, Routable, PartialEq)]
-// pub enum Route {
-//     #[at("/")]
-//     Home,
-//     #[at("/about")]
-//     About,
-// }
-//
-// fn switch(route: Route) -> Html {
-//     match route {
-//         Route::Home => html! {
-//             <h1>{ "This is Home Page" }</h1>
-//         },
-//         Route::About => html! {
-//             <h1>{ "This is About Page" }</h1>
-//         },
-//     }
-// }
+#[wasm_bindgen(start)]
+pub fn run_app() {
+    // Check if we are in a browser environment
+    let is_browser = web_sys::window()
+        .map(|w| w.document().is_some())
+        .unwrap_or(false);
+
+    if is_browser {
+        let document = web_sys::window().unwrap().document().unwrap();
+        if let Some(root) = document.get_element_by_id("app") {
+            yew::Renderer::<App>::with_root_and_props(
+                root, 
+                AppProps { path: String::new() }
+            ).hydrate();
+        }
+    }
+    // If not in browser (i.e., Deno), do nothing and let 
+    // the 'render' function be called manually.
+}

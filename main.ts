@@ -14,6 +14,7 @@ serve(async (req) => {
   // Serve static assets (CSS, favicons, json feeds)
   if (
     url.pathname.startsWith("/static/") ||
+    url.pathname.startsWith("/pkg/") ||
     url.pathname.includes("favicon") ||
     url.pathname.endsWith(".json") ||
     url.pathname.endsWith(".xml")
@@ -35,7 +36,12 @@ serve(async (req) => {
     <title>Abhinandh S</title>
     
     <link rel="stylesheet" href="/static/output.css"/>
-    
+   
+    <script type="module">
+      import init from "/pkg/yew_blog.js";
+      init("/pkg/yew_blog_bg.wasm");
+    </script>
+
     <link rel="icon" href="/static/favicon/favicon.png" type="image/png" />
     <link rel="icon" href="/static/favicon/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/static/favicon/favicon.ico" type="image/x-icon" />
