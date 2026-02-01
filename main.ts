@@ -33,10 +33,13 @@ serve(async (req) => {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio and articles by Abhinandh S - Software Engineer and Rust enthusiast.">
     <title>Abhinandh S</title>
     
     <link rel="stylesheet" href="/static/output.css"/>
-   
+  
+    <link rel="preload" href="/pkg/yew_blog_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+
     <script type="module">
       import init from "/pkg/yew_blog.js";
       init("/pkg/yew_blog_bg.wasm");

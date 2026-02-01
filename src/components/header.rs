@@ -40,7 +40,7 @@ pub fn header() -> Html {
               /* Mobile Hamburger Menu */
               <div class="hidden max-tablet:flex">
                 <div class="pr-3"></div>
-                <button onclick={toggle_menu} class="focus:outline-none">
+                <button onclick={toggle_menu} class="focus:outline-none" aria-label="Open Menu">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
