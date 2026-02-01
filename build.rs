@@ -52,13 +52,13 @@ fn main() {
 
     let _e = get_all_articles();
 
-    let out_file = Path::new("assets/articles/feed.json");
+    let out_file = Path::new("static/articles/feed.json");
     let mut json_feed = File::create(out_file).expect("Failed to create feed.json");
     write!(json_feed, "{}", generate_json_feed()).unwrap();
 
-    fs::write("assets/articles/feed.xml", generate_rss_feed()).unwrap();
+    fs::write("static/articles/feed.xml", generate_rss_feed()).unwrap();
 
-    fs::write("assets/articles/feed.atom.xml", generate_atom_feed()).unwrap();
+    fs::write("static/articles/feed.atom.xml", generate_atom_feed()).unwrap();
 }
 
 use serde::{Deserialize, Serialize};
