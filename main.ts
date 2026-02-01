@@ -3,7 +3,11 @@ import init, { render } from "./pkg/yew_blog.js";
 
 console.log("Server running on http://localhost:8000");
 
-await init();
+// Load the Wasm file into memory
+const wasmCode = await Deno.readFile("./pkg/yew_blog_bg.wasm");
+await init(wasmCode);
+
+
 
 serve(async (req) => {
   // Call the Rust function!
