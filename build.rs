@@ -107,7 +107,6 @@ pub fn get_all_articles() -> Vec<Article> {
     let mut articles = Vec::new();
     let mut dbg = String::new();
     let articles_dir = Path::new("articles/published");
-    let articles_out_dir = Path::new("assets/articles/generated");
     let mut entries = fs::read_dir(articles_dir)
         .expect("Failed to read articles directory")
         .filter_map(Result::ok)
@@ -122,23 +121,6 @@ pub fn get_all_articles() -> Vec<Article> {
         let matter = gray_matter::Matter::<gray_matter::engine::YAML>::new();
         match matter.parse::<FrontMatter>(&ctx) {
             Ok(result) => {
-                let md = result.content.clone();
-                let html = markdown_to_html(&md);
-                let mut file = File::create(articles_out_dir.join(format!(
-                    "{}.html",
-                    path_as_string(&i.path(), FileName::Stem)
-                )))
-                .expect("Failed to create generated.rs");
-                write!(file, "{}", html).unwrap();
-
-                let matter = serde_json::to_string_pretty(&result.matter).unwrap_or_default();
-                let mut file = File::create(articles_out_dir.join(format!(
-                    "{}.json",
-                    path_as_string(&i.path(), FileName::Stem)
-                )))
-                .expect("Failed to create generated.rs");
-                write!(file, "{}", matter).unwrap();
-
                 articles.push(Article {
                     id: i
                         .path()
