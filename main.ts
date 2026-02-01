@@ -1,31 +1,34 @@
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import init, { render } from "./pkg/yew_blog.js";
 
-console.log("Server running on http://localhost:8000");
+const wasmUrl = new URL("./pkg/yew_blog_bg.wasm", import.meta.url);
+await init(wasmUrl);
 
-// Load the Wasm file into memory
-const wasmCode = await Deno.readFile("./pkg/yew_blog_bg.wasm");
-await init(wasmCode);
-
-
+console.log("Server started running...");
 
 serve(async (req) => {
-  // Call the Rust function!
-  const appHtml = await render();
+  const url = new URL(req.url);
+  try {
+    const appHtml = await render(url.pathname);
 
-  const html = `
+    const html = `
     <!DOCTYPE html>
     <html>
-      <head>
-        <title>Abhinandh S</title>
-      </head>
-      <body>
-        <div id="app">${appHtml}</div>
-      </body>
+    <head>
+    <title>Abhinandh S</title>
+    </head>
+    <body>
+    <div id="app">${appHtml}</div>
+    </body>
     </html>
-  `;
+    `;
 
   return new Response(html, {
     headers: { "content-type": "text/html; charset=utf-8" },
   });
+  } catch (err) {
+    console.error("SSR Rendering Error:", err);
+    return new Response("Internal Server Error", { status: 500 });
+    
+  }
 });
