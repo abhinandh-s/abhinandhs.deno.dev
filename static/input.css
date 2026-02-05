@@ -1,12 +1,8 @@
 @import "tailwindcss";
 @source "../../src/**/*.rs";
+@config "../tailwind.config.js";
 
 @theme {
-  /* --- Custom Breakpoints --- */
-  --breakpoint-md: 640px;
-  --breakpoint-lg: 950px;
-  --breakpoint-xl: 1280px;
-
   /* --- Custom Fonts --- */
   --font-sans: "Helvetica Neue", "Helvetica", "Graphik", "Arial", "sans-serif";
   --font-serif: "Merriweather", "serif";
