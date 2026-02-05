@@ -15,6 +15,8 @@ pub fn movies_page() -> Html {
         "batman",
         "prisoners",
         "shutter_island",
+        "ironman",
+        "jhon_wick",
     ];
 
     html! {
