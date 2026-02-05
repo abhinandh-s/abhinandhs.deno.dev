@@ -13,6 +13,8 @@ pub enum Route {
     Articles { id: String },
     #[at("/about")]
     About,
+    #[at("/movies")]
+    Movies,
     #[not_found]
     #[at("/404")]
     NotFound,

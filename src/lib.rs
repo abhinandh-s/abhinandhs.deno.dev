@@ -18,6 +18,7 @@ fn switch(routes: Route) -> Html {
         Route::Articles { id } => html! { <Article post_id={id} /> },
         Route::ArticlesRoute => html! { <pages::articles::ArticleIndex /> },
         Route::About => html! { <pages::about::About /> },
+        Route::Movies => html! { <pages::movies::Movies /> },
         Route::NotFound => html! { <pages::_404::NotFound /> },
     }
 }
