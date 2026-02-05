@@ -22,6 +22,8 @@
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
     --radius-md: 0.375rem;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-display: "Oswald", "ui-serif";
@@ -30,6 +32,7 @@
     --color-latte-text: #4c4f69;
     --color-latte-surface0: #ccd0da;
     --color-latte-crust: #dce0e8;
+    --color-mocha-red: #f38ba8;
     --color-mocha-text: #cdd6f4;
     --color-mocha-surface0: #313244;
     --color-mocha-base: #1e1e2e;
@@ -258,6 +261,9 @@
   .hidden {
     display: none;
   }
+  .table {
+    display: table;
+  }
   .h-auto {
     height: auto;
   }
@@ -276,11 +282,20 @@
   .max-w-full {
     max-width: 100%;
   }
+  .flex-shrink {
+    flex-shrink: 1;
+  }
   .shrink-0 {
     flex-shrink: 0;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .resize {
+    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -401,8 +416,24 @@
   .text-just-red {
     color: var(--color-just-red);
   }
+  .text-latte-red {
+    color: var(--color-latte-red);
+  }
   .underline {
     text-decoration-line: underline;
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
   }
   .group-hover\:underline {
     &:is(:where(.group):hover *) {
@@ -475,6 +506,16 @@
   .dark\:border-mocha-text {
     @media (prefers-color-scheme: dark) {
       border-color: var(--color-mocha-text);
+    }
+  }
+  .dark\:text-just-red {
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-just-red);
+    }
+  }
+  .dark\:text-mocha-red {
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-mocha-red);
     }
   }
 }
@@ -577,6 +618,15 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -588,6 +638,8 @@
       --tw-space-x-reverse: 0;
       --tw-border-style: solid;
       --tw-font-weight: initial;
+      --tw-outline-style: solid;
+      --tw-duration: initial;
     }
   }
 }
