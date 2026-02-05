@@ -21,9 +21,16 @@ pub fn movies_page() -> Html {
         "top_gun",
         "dune",
         "ts_red",
+        "dunkrik",
+        "breaking_bad",
+        "bcs",
+        "el_camino",
+        "dare_devil",
+        "walter_mitty",
+        "fight_club",
     ];
 
-                // Responsive masonry columns
+    // Responsive masonry columns
     html! {
         <>
             <crate::components::header::Header />
