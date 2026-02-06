@@ -17,7 +17,7 @@ ship:
    git add -A && git commit -m "migration" && git push
 
 dev_serve:
-   deno run --watch=main.ts,static/output.css,pkg/ main.ts
+   deno run --allow-net --allow-read --watch=main.ts,static/output.css,pkg/ main.ts
 
 watch_css:
     tailwindcss -i ./static/input.css -o ./static/output.css --watch

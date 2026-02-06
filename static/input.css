@@ -1,23 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Kalam:wght@300;400;700&display=swap');
+
 @import "tailwindcss";
+
 @source "../../src/**/*.rs";
 @config "../tailwind.config.js";
 
 @theme {
-  /* --- Custom Fonts --- */
-  --font-sans: "Helvetica Neue", "Helvetica", "Graphik", "Arial", "sans-serif";
-  --font-serif: "Merriweather", "serif";
+  /* Custom Fonts */
+  --font-sans: "Helvetica Neue", "Helvetica", "Graphik", "Arial", sans-serif;
+  --font-serif: "Merriweather", serif;
   --font-mono: "ui-monospace", "SFMono-Regular";
   --font-display: "Oswald", "ui-serif";
   --font-handwriting: "Niconne";
   --font-modern: "Moderustic";
+  --font-marker: "Permanent Marker", cursive;
+  --font-hand: "Kalam", cursive;
 
-  /* --- Brand Colors --- */
+  /* Brand Colors */
   --color-just-mirage: #1B181F;
   --color-just-charade: #2D2636;
   --color-just-red: #e52e71;
   --color-just-white: #FFFDFF;
 
-  /* --- Catppuccin Latte --- */
+  /* Catppuccin Latte */
   --color-latte-rosewater: #dc8a78;
   --color-latte-flamingo: #dd7878;
   --color-latte-pink: #ea76cb;
@@ -45,7 +50,7 @@
   --color-latte-mantle: #e6e9ef;
   --color-latte-crust: #dce0e8;
 
-  /* --- Catppuccin Mocha --- */
+  /* Catppuccin Mocha */
   --color-mocha-rosewater: #f5e0dc;
   --color-mocha-flamingo: #f2cdcd;
   --color-mocha-pink: #f5c2e7;
@@ -74,20 +79,22 @@
   --color-mocha-crust: #11111b;
 }
 
+/* 5. Base Styles */
 @layer base {
+  body {
+    @apply h-lvh p-2 dark:bg-mocha-crust bg-latte-crust dark:text-mocha-text text-latte-text font-sans;
+  }
+
   .markdown-body {
     @apply bg-latte-crust text-latte-text dark:bg-mocha-crust dark:text-mocha-text;
   }
 
   .markdown-body pre {
-    @apply bg-mocha-base dark:bg-mocha-mantle
-           text-latte-text dark:text-mocha-text
-           p-4 overflow-x-auto rounded-md my-6 font-mono;
+    @apply bg-mocha-base dark:bg-mocha-mantle text-latte-text dark:text-mocha-text p-4 overflow-x-auto rounded-md my-6 font-mono;
   }
 
   :not(pre) > code {
-    @apply bg-latte-surface0 dark:bg-mocha-surface0
-           text-latte-red dark:text-just-red px-1.5 py-0.5 rounded text-sm font-mono;
+    @apply bg-latte-surface0 dark:bg-mocha-surface0 text-latte-red dark:text-just-red px-1.5 py-0.5 rounded text-sm font-mono;
   }
 
   a[aria-current="page"], a[aria-current="true"] {
@@ -97,8 +104,58 @@
   p a {
     @apply text-latte-red dark:text-just-red underline;
   }
+}
 
-  body {
-    @apply h-lvh p-2 dark:bg-mocha-crust bg-latte-crust dark:text-mocha-text text-latte-text;
-  }
+@layer utilities {
+  /* --- Base Typography --- */
+.polaroid_wrapper p {
+  font-family: 'Kalam', cursive;
+  line-height: 1.2;
+  font-weight: 400;
+  margin: 0;
+  color: #2e3440;
+}
+
+.polaroid_wrapper h1 {
+  margin: 0;    
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.3rem;
+}
+
+.polaroid_wrapper h4 {
+  margin: 0; 
+  font-size: 1.0rem; 
+  opacity: 0.8;
+}
+
+.polaroid_wrapper {
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: #bac2de;
+  background-image: url('https://www.transparenttextures.com/patterns/60-lines.png');
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+  width: 100%;   
+  padding: 15px;
+  box-sizing: border-box; /* Ensures padding doesn't break the width */
+  break-inside: avoid;    /* CRITICAL: stops weird spacing/breaks */
+}
+
+.polaroid_wrapper img {
+  width: 100%;
+  height: auto;           /* Use auto for a more natural masonry feel, or keep 260px */
+  aspect-ratio: 1/1;      /* Keeps them square like real Polaroids */
+  display: block;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+
+.polaroid_wrapper_ctx {
+  display: flex;
+  justify-content: space-between; 
+  align-items: baseline;
+  color: #2e3440;
+}
+
 }

@@ -1,9 +1,10 @@
 /*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Kalam:wght@300;400;700&display=swap');
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: "Helvetica Neue", "Helvetica", "Graphik", "Arial", "sans-serif";
+    --font-sans: "Helvetica Neue", "Helvetica", "Graphik", "Arial", sans-serif;
     --font-mono: "ui-monospace", "SFMono-Regular";
     --spacing: 0.25rem;
     --container-3xl: 48rem;
@@ -32,7 +33,6 @@
     --color-latte-text: #4c4f69;
     --color-latte-surface0: #ccd0da;
     --color-latte-crust: #dce0e8;
-    --color-mocha-red: #f38ba8;
     --color-mocha-text: #cdd6f4;
     --color-mocha-surface0: #313244;
     --color-mocha-base: #1e1e2e;
@@ -204,36 +204,6 @@
   .clear-both {
     clear: both;
   }
-  .container {
-    width: 100%;
-    @media (width >= 640px) {
-      max-width: 640px;
-    }
-    @media (width >= 950px) {
-      max-width: 950px;
-    }
-    @media (width >= 1280px) {
-      max-width: 1280px;
-    }
-    @media (width >= 40rem) {
-      max-width: 40rem;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem;
-    }
-  }
-  .m-10 {
-    margin: calc(var(--spacing) * 10);
-  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -261,12 +231,6 @@
   .hidden {
     display: none;
   }
-  .table {
-    display: table;
-  }
-  .h-auto {
-    height: auto;
-  }
   .min-h-32 {
     min-height: calc(var(--spacing) * 32);
   }
@@ -279,29 +243,11 @@
   .max-w-3xl {
     max-width: var(--container-3xl);
   }
-  .max-w-full {
-    max-width: 100%;
-  }
-  .flex-shrink {
-    flex-shrink: 1;
-  }
   .shrink-0 {
     flex-shrink: 0;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .transform {
-    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
-  }
-  .resize {
-    resize: both;
-  }
   .flex-col {
     flex-direction: column;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
   }
   .items-center {
     align-items: center;
@@ -315,19 +261,12 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
-  .gap-6 {
-    gap: calc(var(--spacing) * 6);
-  }
   .space-x-16 {
     :where(& > :not(:last-child)) {
       --tw-space-x-reverse: 0;
       margin-inline-start: calc(calc(var(--spacing) * 16) * var(--tw-space-x-reverse));
       margin-inline-end: calc(calc(var(--spacing) * 16) * calc(1 - var(--tw-space-x-reverse)));
     }
-  }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
   }
   .border-t {
     border-top-style: var(--tw-border-style);
@@ -344,6 +283,9 @@
   .border-l-just-red {
     border-left-color: var(--color-just-red);
   }
+  .p-1 {
+    padding: calc(var(--spacing) * 1);
+  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
@@ -352,9 +294,6 @@
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
-  }
-  .p-8 {
-    padding: calc(var(--spacing) * 8);
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
@@ -413,18 +352,14 @@
     --tw-font-weight: var(--font-weight-extrabold);
     font-weight: var(--font-weight-extrabold);
   }
+  .\!text-mocha-text {
+    color: var(--color-mocha-text) !important;
+  }
   .text-just-red {
     color: var(--color-just-red);
   }
-  .text-latte-red {
-    color: var(--color-latte-red);
-  }
   .underline {
     text-decoration-line: underline;
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .transition-colors {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
@@ -508,18 +443,31 @@
       border-color: var(--color-mocha-text);
     }
   }
+  .dark\:\!text-latte-text {
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-latte-text) !important;
+    }
+  }
   .dark\:text-just-red {
     @media (prefers-color-scheme: dark) {
       color: var(--color-just-red);
     }
   }
-  .dark\:text-mocha-red {
-    @media (prefers-color-scheme: dark) {
-      color: var(--color-mocha-red);
-    }
-  }
 }
 @layer base {
+  body {
+    height: 100lvh;
+    background-color: var(--color-latte-crust);
+    padding: calc(var(--spacing) * 2);
+    font-family: var(--font-sans);
+    color: var(--color-latte-text);
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-mocha-crust);
+    }
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-mocha-text);
+    }
+  }
   .markdown-body {
     background-color: var(--color-latte-crust);
     color: var(--color-latte-text);
@@ -571,38 +519,51 @@
       color: var(--color-just-red);
     }
   }
-  body {
-    height: 100lvh;
-    background-color: var(--color-latte-crust);
-    padding: calc(var(--spacing) * 2);
-    color: var(--color-latte-text);
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-mocha-crust);
-    }
-    @media (prefers-color-scheme: dark) {
-      color: var(--color-mocha-text);
-    }
+}
+@layer utilities {
+  .polaroid_wrapper p {
+    font-family: 'Kalam', cursive;
+    line-height: 1.2;
+    font-weight: 400;
+    margin: 0;
+    color: #2e3440;
   }
-}
-@property --tw-rotate-x {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-rotate-y {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-rotate-z {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-skew-x {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-skew-y {
-  syntax: "*";
-  inherits: false;
+  .polaroid_wrapper h1 {
+    margin: 0;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.3rem;
+  }
+  .polaroid_wrapper h4 {
+    margin: 0;
+    font-size: 1.0rem;
+    opacity: 0.8;
+  }
+  .polaroid_wrapper {
+    display: inline-block;
+    margin-bottom: 20px;
+    background-color: #bac2de;
+    background-image: url('https://www.transparenttextures.com/patterns/60-lines.png');
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    break-inside: avoid;
+  }
+  .polaroid_wrapper img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  .polaroid_wrapper_ctx {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #2e3440;
+  }
 }
 @property --tw-space-x-reverse {
   syntax: "*";
@@ -618,11 +579,6 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -630,15 +586,9 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-rotate-x: initial;
-      --tw-rotate-y: initial;
-      --tw-rotate-z: initial;
-      --tw-skew-x: initial;
-      --tw-skew-y: initial;
       --tw-space-x-reverse: 0;
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
       --tw-duration: initial;
     }
   }
