@@ -2,6 +2,7 @@
 
 pub const ARTICLES: &[(&str, &str)] = &[
    ("age-nvim", include_str!("../../articles/published/age-nvim.md")),
+   ("deno-fresh-to-yew-rs", include_str!("../../articles/published/deno-fresh-to-yew-rs.md")),
    ("hello-world", include_str!("../../articles/published/hello-world.md")),
    ("how-to-set-up-godaddy-domain-with-github-pages", include_str!("../../articles/published/how-to-set-up-godaddy-domain-with-github-pages.md")),
    ("roxide", include_str!("../../articles/published/roxide.md")),
