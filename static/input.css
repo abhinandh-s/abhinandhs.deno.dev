@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Kalam:wght@300;400;700&display=swap');
 
-@import "tailwindcss";
+@import "tailwindcss" source("../src");
 
 @source "../../src/**/*.rs";
-@config "../tailwind.config.js";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --breakpoint-mobile: 640px;
+  --breakpoint-tablet: 950px;
+  --breakpoint-desktop: 1280px;
+
   /* Custom Fonts */
   --font-sans: "Helvetica Neue", "Helvetica", "Graphik", "Arial", sans-serif;
   --font-serif: "Merriweather", serif;
