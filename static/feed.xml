@@ -7,6 +7,43 @@
                 <language>en-us</language>
                 
             <item>
+              <title><![CDATA[Yew.rs and SSR - The Full-Circle Migration]]></title>
+              <link>https://abhinandhs.deno.dev/articles/deno-fresh-to-yew-rs</link>
+              <guid>https://abhinandhs.deno.dev/articles/deno-fresh-to-yew-rs</guid>
+              <pubDate>2026-02-06T00:00:00Z</pubDate>
+              <description><![CDATA[How I finally achieved the "Rust Dream" by migrating from Deno Fresh to Yew.rs with SSR.]]></description>
+              <content:encoded><![CDATA[<p>Years ago, when i dicided to build my own website, first thing i looked for was
+how to build it in <strong>rust</strong>. Since rust is my first language, i felt I had the upper hand there.</p>
+<p><strong>My requirements were</strong>:</p>
+<ul>
+<li>Built in rust</li>
+<li>Free deployment</li>
+<li>High performance</li>
+<li>Stylable</li>
+<li>Serverless</li>
+</ul>
+<p>Well that was too much to ask for.</p>
+<p>The only option for rust was to build a website
+using web assembly. I managed to get a site up and running on Github Pages.
+But the load time was painful.</p>
+<p>Eventually, I compromised. I learned TypeScript and rebuilt the site using the <strong>Deno Fresh</strong> framework.</p>
+<p>It served me for like 2 years.</p>
+<h3>The 2026 Breakthrough</h3>
+<p>This year, I revisited my original dream. But this time, I finally managed to &quot;duct-tape&quot; all my requirements together into a high-performance stack. All because Deno now supports web assembly.</p>
+<ul>
+<li>In rust =&gt; yew.rs</li>
+<li>Free deploy =&gt; Deno deploy</li>
+<li>High performance =&gt; Server Side Rendering</li>
+<li>Styling =&gt; tailwindcss</li>
+</ul>
+<ul>
+<li><strong>Live Site:</strong> <a href="https://abhinandhs.deno.dev">abhinandhs.deno.dev</a></li>
+<li><strong>Source Code:</strong> <a href="https://github.com/abhinandh-s/abhinandhs.deno.dev">GitHub Repository</a></li>
+</ul>
+]]></content:encoded>
+            </item>
+            
+            <item>
               <title><![CDATA[age.nvim]]></title>
               <link>https://abhinandhs.deno.dev/articles/age-nvim</link>
               <guid>https://abhinandhs.deno.dev/articles/age-nvim</guid>
