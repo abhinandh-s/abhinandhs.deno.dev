@@ -27,8 +27,15 @@ pub fn home_page() -> Html {
            <h1 class="border-l-4 border-l-just-red pl-4 font-bold max-tablet:text-3xl text-4xl mt-12">{ "Recent Posts"}<span class="text-just-red">{ "." }</span></h1>
            <ul class="mt-8">
              {
-               for crate::utils::get_recently_add(4).into_iter().map(|articles| {
-                 html! { <crate::pages::articles::ArticleEntryWithDate post_id={articles.id} /> }
+               for crate::utils::get_recently_add(4).into_iter().map(|article| {
+                 let parts: Vec<&str> = article.matter.published_at.split('-').collect();
+                  html! {
+                      <crate::pages::articles::ArticleEntryWithDate
+                          year={parts[0].to_string()}
+                      month={parts[1].to_string()}
+                      post_id={article.id}
+                      />
+                  }
                })
              }
           </ul>

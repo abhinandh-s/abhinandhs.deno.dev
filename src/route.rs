@@ -9,8 +9,8 @@ pub enum Route {
     Portfolio,
     #[at("/articles")]
     ArticlesRoute,
-    #[at("/articles/:id")]
-    Articles { id: String },
+    #[at("/articles/:year/:month/:id")]
+    Articles { year: String, month: String, id: String },
     #[at("/about")]
     About,
     #[at("/movies")]

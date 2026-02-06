@@ -15,7 +15,10 @@ fn switch(routes: Route) -> Html {
     match routes {
         Route::Home => html! { <pages::home::HomePage /> },
         Route::Portfolio => html! { <pages::portfolio::Portfolio /> },
-        Route::Articles { id } => html! { <Article post_id={id} /> },
+        Route::Articles { year, month, id } => html! { 
+            <Article year={year} month={month} post_id={id} /> 
+        
+        },
         Route::ArticlesRoute => html! { <pages::articles::ArticleIndex /> },
         Route::About => html! { <pages::about::About /> },
         Route::Movies => html! { <pages::movies::Movies /> },

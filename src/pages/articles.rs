@@ -1,33 +1,51 @@
 #[derive(Properties, PartialEq)]
 pub struct ArticleProps {
+    pub year: String,
+    pub month: String,
     pub post_id: String,
 }
 
 use yew::prelude::*;
+use yew_router::prelude::Link;
 
+use crate::route::Route;
 use crate::utils::{get_article_by_id, get_date, markdown_to_html};
 
 #[function_component(ArticleEntryWithDate)]
 pub fn article_entry_with_date(props: &ArticleProps) -> Html {
     match get_article_by_id(&props.post_id) {
         Some(article) => {
-            let date = get_date(article.matter.published_at.as_str(), false);
+            let date_str = article.matter.published_at.as_str(); // e.g., "2024-05-12"
+            let date_display = get_date(date_str, false);
+
+            // Extract segments for the URL
+            let parts: Vec<&str> = date_str.split('-').collect();
+            let year = parts.first().unwrap_or(&"0000").to_string();
+            let month = parts.get(1).unwrap_or(&"00").to_string();
 
             html! {
-              <li class="border-t broder-latte-text dark:border-mocha-text py-2">
-                <a href={format!("/articles/{}", article.id)} class="py-2 flex group gap-4">
-                <div class="w-24 shrink-0"> { date } </div>
-                  <div>
-                    <h2 class="font-bold group-hover:underline">{ article.matter.title }</h2>
-                    <p class=""> { article.matter.snippet } </p>
-                  </div>
-                </a>
+              <li class="border-t border-latte-text dark:border-mocha-text py-2">
+                <Link<Route>
+                    to={Route::Articles {
+                        year: year.clone(),
+                        month: month.clone(),
+                        id: article.id.clone()
+                    }}
+                    classes="py-2 flex group gap-4"
+                >
+                    <div class="w-24 shrink-0"> { date_display } </div>
+                    <div>
+                        <h2 class="font-bold group-hover:underline">{ article.matter.title }</h2>
+                        <p> { article.matter.snippet } </p>
+                    </div>
+                </Link<Route>>
               </li>
             }
         }
         None => html!(),
     }
 }
+
 
 #[function_component(ArticleIndex)]
 pub fn article_index() -> Html {
@@ -40,8 +58,15 @@ pub fn article_index() -> Html {
           </h1>
           <ul class="mt-8">
             {
-              for crate::utils::get_all_articles_sorted().into_iter().map(|articles| {
-                html! { <ArticleEntryWithDate post_id={articles.id} /> }
+              for crate::utils::get_all_articles_sorted().into_iter().map(|article| {
+                let parts: Vec<&str> = article.matter.published_at.split('-').collect();
+                      html! {
+                          <ArticleEntryWithDate
+                              year={parts[0].to_string()}
+                              month={parts[1].to_string()}
+                              post_id={article.id}
+                          />
+                      }
               })
             }
           </ul>
