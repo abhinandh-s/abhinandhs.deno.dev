@@ -313,7 +313,13 @@ pub struct TagCloudProps {
 
 #[function_component(TagCloud)]
 pub fn tag_cloud(props: &TagCloudProps) -> Html {
-    let tags = crate::utils::get_articles_by_tag();
+    let tags_map = crate::utils::get_articles_by_tag();
+
+    // Convert to Vec so we can sort
+    let mut tags: Vec<_> = tags_map.into_iter().collect();
+    
+    // Sort ascending (A-Z)
+    tags.sort_by(|a, b| a.0.to_lowercase().cmp(&b.0.to_lowercase()));
 
     html! {
         <div class="pb-4 mt-16">
@@ -347,7 +353,14 @@ pub struct CTagCloudProps {
 }
 #[function_component(CTagCloud)]
 pub fn c_article_tag_cloud(props: &CTagCloudProps) -> Html {
-    let tags = props.tags.clone().unwrap_or_default();
+    let tags_map = props.tags.clone().unwrap_or_default();
+
+    // Convert to Vec so we can sort
+    let mut tags: Vec<_> = tags_map.into_iter().collect();
+    
+    // Sort ascending (A-Z)
+    tags.sort_by_key(|a| a.to_lowercase());
+
 
     html! {
         <div class="pt-2">

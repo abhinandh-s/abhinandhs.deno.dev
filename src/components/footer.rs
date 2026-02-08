@@ -3,7 +3,7 @@ use yew::prelude::*;
 #[function_component(Footer)]
 pub fn footer() -> Html {
     html! {
-      <footer class="text-center clear-both">
+      <footer class="text-center clear-both p-2 mx-auto max-w-3xl">
       <div>
         <br />
         <br />
