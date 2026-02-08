@@ -29,6 +29,7 @@
     --font-weight-extrabold: 800;
     --font-weight-black: 900;
     --tracking-widest: 0.1em;
+    --leading-tight: 1.25;
     --radius-sm: 0.25rem;
     --radius-md: 0.375rem;
     --default-transition-duration: 150ms;
@@ -47,6 +48,8 @@
     --color-mocha-green: #a6e3a1;
     --color-mocha-blue: #89b4fa;
     --color-mocha-text: #cdd6f4;
+    --color-mocha-subtext1: #bac2de;
+    --color-mocha-overlay2: #9399b2;
     --color-mocha-surface2: #585b70;
     --color-mocha-surface1: #45475a;
     --color-mocha-surface0: #313244;
@@ -288,6 +291,9 @@
   .shrink-0 {
     flex-shrink: 0;
   }
+  .flex-grow {
+    flex-grow: 1;
+  }
   .list-none {
     list-style-type: none;
   }
@@ -325,6 +331,9 @@
   }
   .self-start {
     align-self: flex-start;
+  }
+  .overflow-x-auto {
+    overflow-x: auto;
   }
   .border-t {
     border-top-style: var(--tw-border-style);
@@ -430,6 +439,10 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .leading-tight {
+    --tw-leading: var(--leading-tight);
+    line-height: var(--leading-tight);
+  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
@@ -447,6 +460,12 @@
   }
   .text-just-red {
     color: var(--color-just-red);
+  }
+  .text-mocha-overlay2 {
+    color: var(--color-mocha-overlay2);
+  }
+  .text-mocha-subtext1 {
+    color: var(--color-mocha-subtext1);
   }
   .uppercase {
     text-transform: uppercase;
@@ -546,6 +565,16 @@
   .lg\:block {
     @media (width >= 64rem) {
       display: block;
+    }
+  }
+  .lg\:flex-row {
+    @media (width >= 64rem) {
+      flex-direction: row;
+    }
+  }
+  .lg\:px-8 {
+    @media (width >= 64rem) {
+      padding-inline: calc(var(--spacing) * 8);
     }
   }
   .dark\:border-mocha-text {
@@ -935,6 +964,10 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-font-weight {
   syntax: "*";
   inherits: false;
@@ -1018,6 +1051,7 @@
       --tw-space-y-reverse: 0;
       --tw-space-x-reverse: 0;
       --tw-border-style: solid;
+      --tw-leading: initial;
       --tw-font-weight: initial;
       --tw-tracking: initial;
       --tw-duration: initial;

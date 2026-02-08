@@ -77,7 +77,7 @@ pub fn article_index() -> Html {
     }
 }
 
-// https://abhinandh-s.github.io/#/articles/:post
+// https://abhinandhs.deno.dev/articles/:post
 //                                            ^
 //                                            this page
 #[function_component(Article)]
@@ -85,6 +85,7 @@ pub fn article(props: &ArticleProps) -> Html {
         let post_id = props.post_id.clone();
 
         // This effect runs whenever the post_id changes
+        // This solves the artice page scroll along with index problem
     use_effect_with(post_id.clone(), |_| {
         if let Some(window) = web_sys::window() {
             window.scroll_to_with_x_and_y(0.0, 0.0);
@@ -104,21 +105,21 @@ pub fn article(props: &ArticleProps) -> Html {
               <>
                 <crate::components::header::Header />
 
-                <div class="flex flex-row relative max-w-7xl mx-auto">
-<aside class="hidden lg:block w-64 flex-shrink-0 sticky top-20 self-start h-fit">
-                <TableOfContents toc_items={toc_items} />
-</aside>
+                <div class="flex flex-col lg:flex-row relative max-w-7xl mx-auto w-full">
+<aside class="hidden lg:block w-64 flex-shrink-0 sticky top-20 self-start h-fit p-4">
+        <TableOfContents toc_items={toc_items} />
+    </aside>
 
-                <div class="p-4 mx-auto max-w-3xl flex flex-col justify-center">
-                  <p class="font-bold mt-12">{ date }</p>
-                  <h1 class="font-bold text-5xl mt-2">{ post.matter.title }</h1>
+                <main class="flex-grow w-full max-w-3xl px-4 lg:px-8">
+        <p class="font-bold mt-12 text-mocha-overlay2">{ date }</p>
+        <h1 class="font-bold text-5xl mt-2 leading-tight">{ post.matter.title }</h1>
 
-                  <div class="markdown mt-12">
-                    { ctx }
-                  </div>
-                
+        <div class="markdown mt-12 overflow-x-auto"> 
+            // ^ added overflow-x-auto to prevent wide code blocks from breaking mobile
+            { ctx }
+        </div>
+    </main>                
 
-                      </div>
 
                 </div>
                   <crate::components::footer::Footer />
