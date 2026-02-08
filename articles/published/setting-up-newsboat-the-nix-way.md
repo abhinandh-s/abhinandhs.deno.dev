@@ -23,7 +23,7 @@ In Nix, functions are written as follows:
 
 #### Single parameter
 
-```nix
+```json
 param1: {
     # Function Body
 }
@@ -31,7 +31,7 @@ param1: {
 
 #### Two parameters
 
-```nix
+```json
 param1: param2: {
     # Function Body
 }
@@ -51,7 +51,7 @@ Here’s an example:
 
 ### without funtions
 
-```nix
+```json
 { ... }:
 let
 in
@@ -84,7 +84,7 @@ in
 
 ### with funtions
 
-```nix
+```json
 { ... }:
 let
     Youtube = userName: tags: {
@@ -113,7 +113,7 @@ definition, rather than rewriting all the occurrences.
 
 # Final code
 
-```nix
+```json
 { ... }:
 let
 instagramFeeds = users: map ( userNames: {

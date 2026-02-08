@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-            <channel>
-                <title>Abhi's Feed</title>
-                <link>https://abhinandhs.deno.dev/</link>
-                <description>Json feed for articles written by Abhinandh S</description>
-                <language>en-us</language>
-                
-            <item>
-              <title><![CDATA[Yew.rs and SSR - The Full-Circle Migration]]></title>
-              <link>https://abhinandhs.deno.dev/articles/deno-fresh-to-yew-rs</link>
-              <guid>https://abhinandhs.deno.dev/articles/deno-fresh-to-yew-rs</guid>
-              <pubDate>2026-02-06T00:00:00Z</pubDate>
-              <description><![CDATA[How I finally achieved the "Rust Dream" by migrating from Deno Fresh to Yew.rs with SSR.]]></description>
-              <content:encoded><![CDATA[<p>Years ago, when i dicided to build my own website, first thing i looked for was
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Abhi's Feed</title>
+    <link>https://abhinandh-s.github.io/</link>
+    <description>Json feed for articles written by Abhinandh S</description>
+    <language>en-us</language>
+    
+      <item>
+        <title><![CDATA[Yew.rs and SSR - The Circle of Migration]]></title>
+        <link>https://abhinandh-s.github.io/articles/deno-fresh-to-yew-rs</link>
+        <guid>https://abhinandh-s.github.io/articles/deno-fresh-to-yew-rs</guid>
+        <pubDate>2026-02-06T00:00:00Z</pubDate>
+        <description><![CDATA[How I finally achieved the "Rust Dream" by migrating from Deno Fresh to Yew.rs with SSR.]]></description>
+        <content:encoded><![CDATA[<p>Years ago, when i dicided to build my own website, first thing i looked for was
 how to build it in <strong>rust</strong>. Since rust is my first language, i felt I had the upper hand there.</p>
 <p><strong>My requirements were</strong>:</p>
 <ul>
-<li>Built in rust</li>
-<li>Free deployment</li>
-<li>High performance</li>
-<li>Stylable</li>
-<li>Serverless</li>
+<li>[ ] Built in rust</li>
+<li>[ ] Free deployment</li>
+<li>[ ] High performance</li>
+<li>[ ] Stylable</li>
+<li>[ ] Serverless</li>
 </ul>
 <p>Well that was too much to ask for.</p>
 <p>The only option for rust was to build a website
@@ -31,25 +32,26 @@ But the load time was painful.</p>
 <h3>The 2026 Breakthrough</h3>
 <p>This year, I revisited my original dream. But this time, I finally managed to &quot;duct-tape&quot; all my requirements together into a high-performance stack. All because Deno now supports web assembly.</p>
 <ul>
-<li>In rust =&gt; yew.rs</li>
-<li>Free deploy =&gt; Deno deploy</li>
-<li>High performance =&gt; Server Side Rendering</li>
-<li>Styling =&gt; tailwindcss</li>
+<li>[x] Built in rust  =&gt; yew.rs</li>
+<li>[x] Free deployment  =&gt; Deno deploy</li>
+<li>[x] High performance  =&gt; Server Side Rendering</li>
+<li>[x] Stylable  =&gt; tailwindcss</li>
+<li>[x] Serverless</li>
 </ul>
 <ul>
 <li><strong>Live Site:</strong> <a href="https://abhinandhs.deno.dev">abhinandhs.deno.dev</a></li>
 <li><strong>Source Code:</strong> <a href="https://github.com/abhinandh-s/abhinandhs.deno.dev">GitHub Repository</a></li>
 </ul>
 ]]></content:encoded>
-            </item>
-            
-            <item>
-              <title><![CDATA[age.nvim]]></title>
-              <link>https://abhinandhs.deno.dev/articles/age-nvim</link>
-              <guid>https://abhinandhs.deno.dev/articles/age-nvim</guid>
-              <pubDate>2024-12-10T00:00:00Z</pubDate>
-              <description><![CDATA[Neovim plugin for encrypting and decrypting text files inside neovim using `age` with ease.]]></description>
-              <content:encoded><![CDATA[<p><strong>Neovim plugin for encrypting and decrypting text files inside neovim using
+      </item>
+
+      <item>
+        <title><![CDATA[age.nvim]]></title>
+        <link>https://abhinandh-s.github.io/articles/age-nvim</link>
+        <guid>https://abhinandh-s.github.io/articles/age-nvim</guid>
+        <pubDate>2024-12-10T00:00:00Z</pubDate>
+        <description><![CDATA[Neovim plugin for encrypting and decrypting text files inside neovim using `age` with ease.]]></description>
+        <content:encoded><![CDATA[<p><strong>Neovim plugin for encrypting and decrypting text files inside neovim using
 <code>age</code> with ease.</strong></p>
 <h1>Table of Contents</h1>
 <ul>
@@ -63,7 +65,7 @@ But the load time was painful.</p>
 <pre style="background-color:#2b303b;"><code class="language-lua"><span style="color:#65737e;">-- ~/.config/nvim/lua/plugins/age.lua
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">{
-</span><span style="color:#c0c5ce;">    &#39;</span><span style="color:#a3be8c;">abhi-xyz/age.nvim</span><span style="color:#c0c5ce;">&#39;,
+</span><span style="color:#c0c5ce;">    &#39;</span><span style="color:#a3be8c;">abhinandh-s/age.nvim</span><span style="color:#c0c5ce;">&#39;,
 </span><span style="color:#c0c5ce;">    cmd = { &quot;</span><span style="color:#a3be8c;">Age</span><span style="color:#c0c5ce;">&quot; },
 </span><span style="color:#c0c5ce;">    config = </span><span style="color:#b48ead;">function</span><span style="color:#c0c5ce;">()
 </span><span style="color:#c0c5ce;">      </span><span style="color:#b48ead;">local</span><span style="color:#c0c5ce;"> key = </span><span style="color:#96b5b4;">require</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">key</span><span style="color:#c0c5ce;">&#39;)
@@ -134,15 +136,15 @@ efficiently, without the additional complexity of key management and email
 encryption that GPG supports.</li>
 </ol>
 ]]></content:encoded>
-            </item>
-            
-            <item>
-              <title><![CDATA[roxide]]></title>
-              <link>https://abhinandhs.deno.dev/articles/roxide</link>
-              <guid>https://abhinandhs.deno.dev/articles/roxide</guid>
-              <pubDate>2024-11-25T00:00:00Z</pubDate>
-              <description><![CDATA[A lightweight, high-performance alternative to the traditional rm command, written in rust.]]></description>
-              <content:encoded><![CDATA[<p><code>roxide</code> is a lightweight, high-performance alternative to the traditional <code>rm</code>
+      </item>
+
+      <item>
+        <title><![CDATA[roxide]]></title>
+        <link>https://abhinandh-s.github.io/articles/roxide</link>
+        <guid>https://abhinandh-s.github.io/articles/roxide</guid>
+        <pubDate>2024-11-25T00:00:00Z</pubDate>
+        <description><![CDATA[A lightweight, high-performance alternative to the traditional rm command, written in rust.]]></description>
+        <content:encoded><![CDATA[<p><code>roxide</code> is a lightweight, high-performance alternative to the traditional <code>rm</code>
 command, designed with an emphasis on speed and data preservation. Unlike
 standard rm, which permanently deletes files, roxide safely moves them to a
 designated &quot;<code>trash</code>&quot; directory. This approach enables efficient and fast file
@@ -255,15 +257,15 @@ automatically clearing files older than a specified period.</li>
 <li>roxide -s: Shreds files for secure deletion.</li>
 </ul>
 ]]></content:encoded>
-            </item>
-            
-            <item>
-              <title><![CDATA[Nix Functions To Setup Newsboat Urls]]></title>
-              <link>https://abhinandhs.deno.dev/articles/setting-up-newsboat-the-nix-way</link>
-              <guid>https://abhinandhs.deno.dev/articles/setting-up-newsboat-the-nix-way</guid>
-              <pubDate>2024-10-22T00:00:00Z</pubDate>
-              <description><![CDATA[Setting up your newsboat configuration using Nix functions.]]></description>
-              <content:encoded><![CDATA[<p>RSS is a powerful way to stay updated with your favorite blogs, social media
+      </item>
+
+      <item>
+        <title><![CDATA[Nix Functions To Setup Newsboat Urls]]></title>
+        <link>https://abhinandh-s.github.io/articles/setting-up-newsboat-the-nix-way</link>
+        <guid>https://abhinandh-s.github.io/articles/setting-up-newsboat-the-nix-way</guid>
+        <pubDate>2024-10-22T00:00:00Z</pubDate>
+        <description><![CDATA[Setting up your newsboat configuration using Nix functions.]]></description>
+        <content:encoded><![CDATA[<p>RSS is a powerful way to stay updated with your favorite blogs, social media
 channels, and other online content without being distracted by endless scrolling
 on the actual platforms. <a href="https://newsboat.org/">Newsboat</a>, a terminal-based RSS
 reader, is an excellent tool for this.</p>
@@ -275,13 +277,13 @@ supported platforms visit <a href="https://rsshub.netlify.app/">rsshub</a>.</p>
 <h1>Nix Functions</h1>
 <p>In Nix, functions are written as follows:</p>
 <h4>Single parameter</h4>
-<pre style="background-color:#2b303b;"><code class="language-nix"><span style="color:#c0c5ce;">param1: {
-</span><span style="color:#c0c5ce;">    # Function Body
+<pre style="background-color:#2b303b;"><code class="language-json"><span style="color:#c0c5ce;">param</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">: {
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">#</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">Function</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">Body</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">}
 </span></code></pre>
 <h4>Two parameters</h4>
-<pre style="background-color:#2b303b;"><code class="language-nix"><span style="color:#c0c5ce;">param1: param2: {
-</span><span style="color:#c0c5ce;">    # Function Body
+<pre style="background-color:#2b303b;"><code class="language-json"><span style="color:#c0c5ce;">param</span><span style="color:#d08770;">1</span><span style="color:#c0c5ce;">: param</span><span style="color:#d08770;">2</span><span style="color:#c0c5ce;">: {
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">#</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">Function</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">Body</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">}
 </span></code></pre>
 <p>Here, param1, param2, and so on are the inputs (arguments) to the function. This
@@ -294,29 +296,29 @@ they are anonymous. To use them, you must bind the function to a variable. Once
 bound, you can call the variable like a named function.</p>
 <p>Here’s an example:</p>
 <h3>without funtions</h3>
-<pre style="background-color:#2b303b;"><code class="language-nix"><span style="color:#c0c5ce;">{ ... }:
+<pre style="background-color:#2b303b;"><code class="language-json"><span style="color:#c0c5ce;">{ </span><span style="background-color:#bf616a;color:#2b303b;">...</span><span style="color:#c0c5ce;"> }:
 </span><span style="color:#c0c5ce;">let
 </span><span style="color:#c0c5ce;">in
 </span><span style="color:#c0c5ce;">{
-</span><span style="color:#c0c5ce;">    programs.newsboat = {
-</span><span style="color:#c0c5ce;">        enable = true;
-</span><span style="color:#c0c5ce;">        urls = [
-</span><span style="color:#c0c5ce;">            {tags = [ &quot;articles&quot; ]; url = &quot;https://proton.me/blog/feed&quot;;}
-</span><span style="color:#c0c5ce;">            { # normal way 
-</span><span style="color:#c0c5ce;">                tags = [ &quot;youtube&quot; &quot;music&quot; ];
-</span><span style="color:#c0c5ce;">                url = &quot;https://rsshub.app/youtube/user/@JFlaMusic&quot;;
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">programs.newsboat</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="background-color:#bf616a;color:#2b303b;">enable</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">true;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="background-color:#bf616a;color:#2b303b;">urls</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="background-color:#bf616a;color:#2b303b;">{tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">articles</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://proton.me/blog/feed</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">}
+</span><span style="color:#c0c5ce;">            { </span><span style="background-color:#bf616a;color:#2b303b;">#</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">normal</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">way</span><span style="color:#c0c5ce;"> 
+</span><span style="color:#c0c5ce;">                </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">music</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/youtube/user/@JFlaMusic</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">            }
 </span><span style="color:#c0c5ce;">            { 
-</span><span style="color:#c0c5ce;">                tags = [ &quot;youtube&quot; &quot;movies&quot; ];
-</span><span style="color:#c0c5ce;">                url = &quot;https://rsshub.app/youtube/user/@DanMurrellMovies&quot;;
+</span><span style="color:#c0c5ce;">                </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">movies</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/youtube/user/@DanMurrellMovies</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">            }
 </span><span style="color:#c0c5ce;">            { 
-</span><span style="color:#c0c5ce;">                tags = [ &quot;youtube&quot; &quot;programming&quot; ];
-</span><span style="color:#c0c5ce;">                url = &quot;https://rsshub.app/youtube/user/@jonhoo&quot;;
+</span><span style="color:#c0c5ce;">                </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">programming</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/youtube/user/@jonhoo</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">            }
 </span><span style="color:#c0c5ce;">            { 
-</span><span style="color:#c0c5ce;">                tags = [ &quot;youtube&quot; &quot;programming&quot; ];
-</span><span style="color:#c0c5ce;">                url = &quot;https://rsshub.app/youtube/user/@ThePrimeagen&quot;;
+</span><span style="color:#c0c5ce;">                </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">programming</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">                </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/youtube/user/@ThePrimeagen</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">            }
 </span><span style="color:#c0c5ce;">            # and so on...
 </span><span style="color:#c0c5ce;">        ]
@@ -324,22 +326,22 @@ bound, you can call the variable like a named function.</p>
 </span><span style="color:#c0c5ce;">}
 </span></code></pre>
 <h3>with funtions</h3>
-<pre style="background-color:#2b303b;"><code class="language-nix"><span style="color:#c0c5ce;">{ ... }:
+<pre style="background-color:#2b303b;"><code class="language-json"><span style="color:#c0c5ce;">{ </span><span style="background-color:#bf616a;color:#2b303b;">...</span><span style="color:#c0c5ce;"> }:
 </span><span style="color:#c0c5ce;">let
 </span><span style="color:#c0c5ce;">    Youtube = userName: tags: {
-</span><span style="color:#c0c5ce;">        tags = tags;
-</span><span style="color:#c0c5ce;">        url = &quot;https://rsshub.app/youtube/user/@${userName}&quot;;
+</span><span style="color:#c0c5ce;">        </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">tags;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/youtube/user/@${userName}</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">    };
 </span><span style="color:#c0c5ce;">in
 </span><span style="color:#c0c5ce;">    {
-</span><span style="color:#c0c5ce;">    programs.newsboat = {
-</span><span style="color:#c0c5ce;">        enable = true;
-</span><span style="color:#c0c5ce;">        urls = [
-</span><span style="color:#c0c5ce;">            {tags = [ &quot;articles&quot; ]; url = &quot;https://proton.me/blog/feed&quot;;}
-</span><span style="color:#c0c5ce;">            (Youtube &quot;JFlaMusic&quot; [ &quot;youtube&quot; &quot;music&quot; ])
-</span><span style="color:#c0c5ce;">            (Youtube &quot;DanMurrellMovies&quot; [ &quot;youtube&quot; &quot;movies&quot; ])
-</span><span style="color:#c0c5ce;">            (Youtube &quot;jonhoo&quot; [ &quot;youtube&quot; &quot;programming&quot; ])
-</span><span style="color:#c0c5ce;">            (Youtube &quot;ThePrimeagen&quot; [ &quot;youtube&quot; &quot;programming&quot; ])
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">programs.newsboat</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="background-color:#bf616a;color:#2b303b;">enable</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">true;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">        </span><span style="background-color:#bf616a;color:#2b303b;">urls</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">            </span><span style="background-color:#bf616a;color:#2b303b;">{tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">articles</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://proton.me/blog/feed</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">}
+</span><span style="color:#c0c5ce;">            (Youtube &quot;</span><span style="color:#a3be8c;">JFlaMusic</span><span style="color:#c0c5ce;">&quot; [ &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">music</span><span style="color:#c0c5ce;">&quot; ])
+</span><span style="color:#c0c5ce;">            (Youtube &quot;</span><span style="color:#a3be8c;">DanMurrellMovies</span><span style="color:#c0c5ce;">&quot; [ &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">movies</span><span style="color:#c0c5ce;">&quot; ])
+</span><span style="color:#c0c5ce;">            (Youtube &quot;</span><span style="color:#a3be8c;">jonhoo</span><span style="color:#c0c5ce;">&quot; [ &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">programming</span><span style="color:#c0c5ce;">&quot; ])
+</span><span style="color:#c0c5ce;">            (Youtube &quot;</span><span style="color:#a3be8c;">ThePrimeagen</span><span style="color:#c0c5ce;">&quot; [ &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">programming</span><span style="color:#c0c5ce;">&quot; ])
 </span><span style="color:#c0c5ce;">            # and so on...
 </span><span style="color:#c0c5ce;">        ]
 </span><span style="color:#c0c5ce;">    };
@@ -349,74 +351,74 @@ bound, you can call the variable like a named function.</p>
 for RSS changes, you only need to update a single line in the function
 definition, rather than rewriting all the occurrences.</p>
 <h1>Final code</h1>
-<pre style="background-color:#2b303b;"><code class="language-nix"><span style="color:#c0c5ce;">{ ... }:
+<pre style="background-color:#2b303b;"><code class="language-json"><span style="color:#c0c5ce;">{ </span><span style="background-color:#bf616a;color:#2b303b;">...</span><span style="color:#c0c5ce;"> }:
 </span><span style="color:#c0c5ce;">let
 </span><span style="color:#c0c5ce;">instagramFeeds = users: map ( userNames: {
-</span><span style="color:#c0c5ce;">    tags = [ &quot;instagram&quot; ];
-</span><span style="color:#c0c5ce;">    url = &quot;https://rsshub.app/picuki/profile/${userNames}&quot;;
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">instagram</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/picuki/profile/${userNames}</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">    }) users;
 </span><span style="color:#c0c5ce;">twitterFeeds = users: map ( userNames: {
-</span><span style="color:#c0c5ce;">    tags = [ &quot;twitter&quot; ];
-</span><span style="color:#c0c5ce;">    url = &quot;https://nitter.privacydev.net/${userNames}/rss&quot;;
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">twitter</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://nitter.privacydev.net/${userNames}/rss</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">    }) users;
 </span><span style="color:#c0c5ce;">redditFeeds = users: map ( userNames: {
-</span><span style="color:#c0c5ce;">    tags = [ &quot;reddit&quot; ];
-</span><span style="color:#c0c5ce;">    url = &quot;https://www.reddit.com/r/${userNames}.rss&quot;;
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">reddit</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://www.reddit.com/r/${userNames}.rss</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">    }) users;
 </span><span style="color:#c0c5ce;">youTubeFeeds = users: map ( userNames: {
-</span><span style="color:#c0c5ce;">    tags = [ &quot;youtube&quot; ];
-</span><span style="color:#c0c5ce;">    url = &quot;https://rsshub.app/youtube/user/@${userNames}&quot;;
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/youtube/user/@${userNames}</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">    }) users;
 </span><span style="color:#c0c5ce;">Youtube = userName: tags: {
-</span><span style="color:#c0c5ce;">  tags = tags;
-</span><span style="color:#c0c5ce;">  url = &quot;https://rsshub.app/youtube/user/@${userName}&quot;;
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">tags;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/youtube/user/@${userName}</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">};
 </span><span style="color:#c0c5ce;">YoutubeId = channel_id: tags: {
-</span><span style="color:#c0c5ce;">  tags = tags;
-</span><span style="color:#c0c5ce;">  url = &quot;https://www.youtube.com/feeds/videos.xml?channel_id=${channel_id}&quot;;
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">tags;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://www.youtube.com/feeds/videos.xml?channel_id=${channel_id}</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">};
 </span><span style="color:#c0c5ce;">YtMusicChart = category: countryCode: tags: {
-</span><span style="color:#c0c5ce;">  tags = tags;
-</span><span style="color:#c0c5ce;">  url = &quot;https://rsshub.app/youtube/charts/${category}/${countryCode}/RightNow&quot;;
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">tags;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/youtube/charts/${category}/${countryCode}/RightNow</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">};
 </span><span style="color:#c0c5ce;">Spotify = category: name: id: {
-</span><span style="color:#c0c5ce;">  tags = [ &quot;music&quot; ];
-</span><span style="color:#c0c5ce;">  url = &quot;https://rsshub.app/spotify/${category}/${id}&quot;;
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">music</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://rsshub.app/spotify/${category}/${id}</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">};
 </span><span style="color:#c0c5ce;">in 
 </span><span style="color:#c0c5ce;">{
-</span><span style="color:#c0c5ce;">  programs.newsboat = {
-</span><span style="color:#c0c5ce;">    enable = true;
-</span><span style="color:#c0c5ce;">    browser = &quot;linkhandler&quot;;
-</span><span style="color:#c0c5ce;">    autoReload = false;
-</span><span style="color:#c0c5ce;">    urls = [
-</span><span style="color:#c0c5ce;">      {tags = [ &quot;articles&quot; ]; url = &quot;https://feeds.feedburner.com/collabfund&quot;;}
-</span><span style="color:#c0c5ce;">      (Youtube &quot;CinemaStellar&quot; [ &quot;youtube&quot; &quot;movies&quot; ])
-</span><span style="color:#c0c5ce;">      (Youtube &quot;DanMurrellMovies&quot; [ &quot;youtube&quot; &quot;movies&quot; ])
-</span><span style="color:#c0c5ce;">      (YoutubeId &quot;UC7YOGHUfC1Tb6E4pudI9STA&quot; [])
-</span><span style="color:#c0c5ce;">      (YoutubeId &quot;UCP7WmQ_U4GB3K51Od9QvM0w&quot; [])
-</span><span style="color:#c0c5ce;">      (YtMusicChart &quot;TopSongs&quot; &quot;in&quot; [ &quot;YtMusic&quot; ])
-</span><span style="color:#c0c5ce;">      (Spotify &quot;playlist&quot; &quot;Top Songs - Global&quot; &quot;37i9dQZEVXbNG2KDcFcKOF&quot;)
-</span><span style="color:#c0c5ce;">      (Spotify &quot;playlist&quot; &quot;Top Songs - India&quot; &quot;37i9dQZEVXbMWDif5SCBJq&quot;)
-</span><span style="color:#c0c5ce;">      (Spotify &quot;artist&quot; &quot;Halsey&quot;            &quot;26VFTg2z8YR0cCuwLzESi2&quot;)
-</span><span style="color:#c0c5ce;">      (Spotify &quot;artist&quot; &quot;The Chainsmokers&quot;  &quot;69GGBxA162lTqCwzJG5jLp&quot;)
+</span><span style="color:#c0c5ce;">  </span><span style="background-color:#bf616a;color:#2b303b;">programs.newsboat</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">{</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">enable</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">true;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">browser</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">linkhandler</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">autoReload</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">false;</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="background-color:#bf616a;color:#2b303b;">urls</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">      </span><span style="background-color:#bf616a;color:#2b303b;">{tags</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">[</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">articles</span><span style="color:#c0c5ce;">&quot; </span><span style="background-color:#bf616a;color:#2b303b;">];</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">url</span><span style="color:#c0c5ce;"> </span><span style="background-color:#bf616a;color:#2b303b;">=</span><span style="color:#c0c5ce;"> &quot;</span><span style="color:#a3be8c;">https://feeds.feedburner.com/collabfund</span><span style="color:#c0c5ce;">&quot;</span><span style="background-color:#bf616a;color:#2b303b;">;</span><span style="color:#c0c5ce;">}
+</span><span style="color:#c0c5ce;">      (Youtube &quot;</span><span style="color:#a3be8c;">CinemaStellar</span><span style="color:#c0c5ce;">&quot; [ &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">movies</span><span style="color:#c0c5ce;">&quot; ])
+</span><span style="color:#c0c5ce;">      (Youtube &quot;</span><span style="color:#a3be8c;">DanMurrellMovies</span><span style="color:#c0c5ce;">&quot; [ &quot;</span><span style="color:#a3be8c;">youtube</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">movies</span><span style="color:#c0c5ce;">&quot; ])
+</span><span style="color:#c0c5ce;">      (YoutubeId &quot;</span><span style="color:#a3be8c;">UC7YOGHUfC1Tb6E4pudI9STA</span><span style="color:#c0c5ce;">&quot; [])
+</span><span style="color:#c0c5ce;">      (YoutubeId &quot;</span><span style="color:#a3be8c;">UCP7WmQ_U4GB3K51Od9QvM0w</span><span style="color:#c0c5ce;">&quot; [])
+</span><span style="color:#c0c5ce;">      (YtMusicChart &quot;</span><span style="color:#a3be8c;">TopSongs</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">in</span><span style="color:#c0c5ce;">&quot; [ &quot;</span><span style="color:#a3be8c;">YtMusic</span><span style="color:#c0c5ce;">&quot; ])
+</span><span style="color:#c0c5ce;">      (Spotify &quot;</span><span style="color:#a3be8c;">playlist</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">Top Songs - Global</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">37i9dQZEVXbNG2KDcFcKOF</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">      (Spotify &quot;</span><span style="color:#a3be8c;">playlist</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">Top Songs - India</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">37i9dQZEVXbMWDif5SCBJq</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">      (Spotify &quot;</span><span style="color:#a3be8c;">artist</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">Halsey</span><span style="color:#c0c5ce;">&quot;            &quot;</span><span style="color:#a3be8c;">26VFTg2z8YR0cCuwLzESi2</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">      (Spotify &quot;</span><span style="color:#a3be8c;">artist</span><span style="color:#c0c5ce;">&quot; &quot;</span><span style="color:#a3be8c;">The Chainsmokers</span><span style="color:#c0c5ce;">&quot;  &quot;</span><span style="color:#a3be8c;">69GGBxA162lTqCwzJG5jLp</span><span style="color:#c0c5ce;">&quot;)
 </span><span style="color:#c0c5ce;">      ]
 </span><span style="color:#c0c5ce;">      ++ youTubeFeeds [
-</span><span style="color:#c0c5ce;">        &quot;jonhoo&quot;
-</span><span style="color:#c0c5ce;">        &quot;LukeSmithxyz&quot;
-</span><span style="color:#c0c5ce;">        &quot;NoBoilerplate&quot;
+</span><span style="color:#c0c5ce;">        &quot;</span><span style="color:#a3be8c;">jonhoo</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">        &quot;</span><span style="color:#a3be8c;">LukeSmithxyz</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">        &quot;</span><span style="color:#a3be8c;">NoBoilerplate</span><span style="color:#c0c5ce;">&quot;
 </span><span style="color:#c0c5ce;">        ]
 </span><span style="color:#c0c5ce;">        ++ twitterFeeds [
-</span><span style="color:#c0c5ce;">          &quot;jonhoo&quot;
-</span><span style="color:#c0c5ce;">          &quot;MikaPikaZo&quot;
+</span><span style="color:#c0c5ce;">          &quot;</span><span style="color:#a3be8c;">jonhoo</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">          &quot;</span><span style="color:#a3be8c;">MikaPikaZo</span><span style="color:#c0c5ce;">&quot;
 </span><span style="color:#c0c5ce;">        ]
 </span><span style="color:#c0c5ce;">        ++ redditFeeds [
-</span><span style="color:#c0c5ce;">          &quot;rust&quot;
-</span><span style="color:#c0c5ce;">          &quot;nixos&quot;
-</span><span style="color:#c0c5ce;">          &quot;unixporn&quot;
+</span><span style="color:#c0c5ce;">          &quot;</span><span style="color:#a3be8c;">rust</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">          &quot;</span><span style="color:#a3be8c;">nixos</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">          &quot;</span><span style="color:#a3be8c;">unixporn</span><span style="color:#c0c5ce;">&quot;
 </span><span style="color:#c0c5ce;">        ]
 </span><span style="color:#c0c5ce;">        ++ instagramFeeds [
-</span><span style="color:#c0c5ce;">          &quot;kartikaaryan&quot;
+</span><span style="color:#c0c5ce;">          &quot;</span><span style="color:#a3be8c;">kartikaaryan</span><span style="color:#c0c5ce;">&quot;
 </span><span style="color:#c0c5ce;">        ];
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">    extraConfig = &#39;&#39;
@@ -427,15 +429,15 @@ definition, rather than rewriting all the occurrences.</p>
 </span><span style="color:#c0c5ce;">}
 </span></code></pre>
 ]]></content:encoded>
-            </item>
-            
-            <item>
-              <title><![CDATA[How to Set Up GoDaddy Domain With GitHub Pages]]></title>
-              <link>https://abhinandhs.deno.dev/articles/how-to-set-up-godaddy-domain-with-github-pages</link>
-              <guid>https://abhinandhs.deno.dev/articles/how-to-set-up-godaddy-domain-with-github-pages</guid>
-              <pubDate>2024-10-19T00:00:00Z</pubDate>
-              <description><![CDATA[How to Set Up GoDaddy Domain With GitHub Pages.]]></description>
-              <content:encoded><![CDATA[<p>Congrats! You’ve finally bought yourself a domain, and now you're ready to
+      </item>
+
+      <item>
+        <title><![CDATA[How to Set Up GoDaddy Domain With GitHub Pages]]></title>
+        <link>https://abhinandh-s.github.io/articles/how-to-set-up-godaddy-domain-with-github-pages</link>
+        <guid>https://abhinandh-s.github.io/articles/how-to-set-up-godaddy-domain-with-github-pages</guid>
+        <pubDate>2024-10-19T00:00:00Z</pubDate>
+        <description><![CDATA[How to Set Up GoDaddy Domain With GitHub Pages.]]></description>
+        <content:encoded><![CDATA[<p>Congrats! You’ve finally bought yourself a domain, and now you're ready to
 connect it to your GitHub Pages website. This guide will walk you through the
 steps to set up your GoDaddy domain with GitHub Pages.</p>
 <h1>Step 1: Configuring GitHub Pages</h1>
@@ -534,30 +536,79 @@ over HTTPS.</p>
 <p>That’s it! You've successfully set up your GoDaddy domain with GitHub Pages. 🎉
 Enjoy your new, secure website!</p>
 ]]></content:encoded>
-            </item>
-            
-            <item>
-              <title><![CDATA[Hello World]]></title>
-              <link>https://abhinandhs.deno.dev/articles/hello-world</link>
-              <guid>https://abhinandhs.deno.dev/articles/hello-world</guid>
-              <pubDate>2024-06-26T00:00:00Z</pubDate>
-              <description><![CDATA[My first blog entry.]]></description>
-              <content:encoded><![CDATA[<h1>Hello, World!</h1>
-<p>published: 2024-11-01</p>
+      </item>
+
+      <item>
+        <title><![CDATA[Hello World]]></title>
+        <link>https://abhinandh-s.github.io/articles/hello-world</link>
+        <guid>https://abhinandh-s.github.io/articles/hello-world</guid>
+        <pubDate>2024-06-26T00:00:00Z</pubDate>
+        <description><![CDATA[My first blog entry.]]></description>
+        <content:encoded><![CDATA[<h1>Hello, World!</h1>
 <p>Welcome to my first blog post! This content is written in Markdown and styled
 using GitHub Flavored Markdown.</p>
+<h1>Heading 01</h1>
+<h2>Heading 02</h2>
+<h3>Heading 03</h3>
+<h4>Heading 04</h4>
+<h5>Heading 05</h5>
+<h6>Heading 06</h6>
+<h2>Unordered Lists</h2>
 <ul>
-<li>list item 01</li>
-<li>list item 02</li>
-<li>list item 03</li>
+<li>Item one</li>
+<li>Item two
+<ul>
+<li>Sub-item A (indent 2 or 4 spaces)</li>
+<li>Sub-item B</li>
 </ul>
+</li>
+<li>Item three</li>
+</ul>
+<h2>Ordered Lists</h2>
+<ol>
+<li>First thing</li>
+<li>Second thing</li>
+<li>Third thing
+<ol>
+<li>Nested ordered item</li>
+</ol>
+</li>
+</ol>
 <blockquote>
 <p>Block quote</p>
 </blockquote>
 <blockquote>
 <p>[!IMPORTANT]
-This is important</p>
+This is important
+Important	Purple	.markdown-alert-important</p>
 </blockquote>
+<blockquote>
+<p>[!NOTE]
+This is a note
+Note	Blue	.markdown-alert-note</p>
+</blockquote>
+<blockquote>
+<p>[!TIP]
+This is a tip
+Tip	Green	.markdown-alert-tip</p>
+</blockquote>
+<blockquote>
+<p>[!WARNING]
+This is a warning
+Warning	Yellow/Orange	.markdown-alert-warning</p>
+</blockquote>
+<blockquote>
+<p>[!CAUTION]
+This is a caution
+Caution  Red 	.markdown-alert-caution</p>
+</blockquote>
+<h2>CheckBoxes</h2>
+<ul>
+<li>[x] Done</li>
+<li>[ ] Not done</li>
+</ul>
+<h2>Spoilers</h2>
+<p>Lorem Ipsum is simply ||dummy text|| of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 <pre style="background-color:#2b303b;"><code class="language-Rust"><span style="color:#96b5b4;">main</span><span style="color:#c0c5ce;">() {
 </span><span style="color:#c0c5ce;">    println!(&quot;</span><span style="color:#a3be8c;">hello world!</span><span style="color:#c0c5ce;">&quot;);
 </span><span style="color:#c0c5ce;">}
@@ -566,13 +617,12 @@ This is important</p>
 <ul>
 <li><strong>Light and Dark Mode</strong> support</li>
 <li>Code highlighting:
-<pre style="background-color:#2b303b;"><code class="language-ts"><span style="color:#c0c5ce;">console.log(&quot;Hello, TypeScript!&quot;);
+<pre style="background-color:#2b303b;"><code class="language-javascript"><span style="color:#c0c5ce;">console.</span><span style="color:#96b5b4;">log</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">Hello, JavaScript!</span><span style="color:#c0c5ce;">&quot;);
 </span></code></pre>
 </li>
 </ul>
 ]]></content:encoded>
-            </item>
-            
-            </channel>
-        </rss>
-        
+      </item>
+
+  </channel>
+</rss>

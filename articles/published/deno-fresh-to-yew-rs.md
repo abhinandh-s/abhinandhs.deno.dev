@@ -1,5 +1,5 @@
 ---
-title: Yew.rs and SSR - The Full-Circle Migration
+title: Yew.rs and SSR - The Circle of Migration
 published_at: 2026-02-06
 updated_at: 2026-02-06
 snippet: How I finally achieved the "Rust Dream" by migrating from Deno Fresh to Yew.rs with SSR.
@@ -12,11 +12,11 @@ how to build it in **rust**. Since rust is my first language, i felt I had the u
 **My requirements were**:
 
 
-- Built in rust 
-- Free deployment
-- High performance
-- Stylable
-- Serverless 
+- [ ] Built in rust 
+- [ ] Free deployment
+- [ ] High performance
+- [ ] Stylable
+- [ ] Serverless 
 
 
 Well that was too much to ask for.
@@ -38,12 +38,11 @@ It served me for like 2 years.
 
 This year, I revisited my original dream. But this time, I finally managed to "duct-tape" all my requirements together into a high-performance stack. All because Deno now supports web assembly.
 
-
-- In rust => yew.rs 
-- Free deploy => Deno deploy
-- High performance => Server Side Rendering
-- Styling => tailwindcss
-
+- [x] Built in rust  => yew.rs
+- [x] Free deployment  => Deno deploy
+- [x] High performance  => Server Side Rendering
+- [x] Stylable  => tailwindcss
+- [x] Serverless
 
 * **Live Site:** [abhinandhs.deno.dev](https://abhinandhs.deno.dev)
 * **Source Code:** [GitHub Repository](https://github.com/abhinandh-s/abhinandhs.deno.dev)

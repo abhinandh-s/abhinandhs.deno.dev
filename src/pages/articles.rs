@@ -9,7 +9,7 @@ use yew::prelude::*;
 use yew_router::prelude::Link;
 
 use crate::route::Route;
-use crate::utils::{get_article_by_id, get_date, markdown_to_html};
+use crate::utils::{TocItem, get_article_by_id, get_date, markdown_to_html};
 
 #[function_component(ArticleEntryWithDate)]
 pub fn article_entry_with_date(props: &ArticleProps) -> Html {
@@ -84,28 +84,69 @@ pub fn article_index() -> Html {
 pub fn article(props: &ArticleProps) -> Html {
     match get_article_by_id(&props.post_id) {
         Some(post) => {
-            let html_content = markdown_to_html(&post.content);
+            let (toc_items, html_content) = markdown_to_html(&post.content);
             let ctx = Html::from_html_unchecked(html_content.into());
             let org = post.matter.published_at;
             let date = get_date(org.clone().as_str(), true);
+
 
             html! {
               <>
                 <crate::components::header::Header />
 
+                <div class="flex flex-row relative max-w-7xl mx-auto">
+<aside class="hidden lg:block w-64 flex-shrink-0 sticky top-20 self-start h-fit">
+                <TableOfContents toc_items={toc_items} />
+</aside>
+
                 <div class="p-4 mx-auto max-w-3xl flex flex-col justify-center">
-                  <h1 class="font-bold mt-12">{ date }</h1>
+                  <p class="font-bold mt-12">{ date }</p>
                   <h1 class="font-bold text-5xl mt-2">{ post.matter.title }</h1>
 
-                  <div class="markdown-body mt-12">
+                  <div class="markdown mt-12">
                     { ctx }
                   </div>
+                
 
-                  <crate::components::footer::Footer />
+                      </div>
+
                 </div>
+                  <crate::components::footer::Footer />
               </>
             }
         }
         None => html! { <crate::pages::_404::NotFound /> },
+    }
+}
+
+
+#[derive(Properties, PartialEq)]
+pub struct TocProps {
+    pub toc_items: Vec<TocItem>,
+}
+
+#[function_component(TableOfContents)]
+pub fn table_of_contents(props: &TocProps) -> Html {
+    html! {
+        <nav class="toc-container p-4 bg-transparent">
+            <h3 class="text-subtext1 font-bold mb-4 uppercase text-xs tracking-widest">{"On this page"}</h3>
+            <ul class="space-y-2 list-none border-l border-surface1 ml-2">
+                { for props.toc_items.iter().map(|item| {
+                    // Calculate indentation based on level (H1 = 0, H2 = 4, H3 = 8...)
+                    // Note: In Tailwind, dynamic strings like ml-{x} must be in your safelist 
+                    // or handled via style if the value is truly dynamic.
+                    let left_padding = format!("padding-left: {}rem", (item.level as f32 - 1.0) * 0.75);
+                    
+                    html! {
+                        <li key={item.id.clone()} style={left_padding}>
+                            <a href={format!("#{}", item.id)} 
+                               class="block py-1 text-subtext0 hover:text-red transition-colors text-sm border-l-2 border-transparent hover:border-red pl-2 -ml-[1px]">
+                                { &item.text }
+                            </a>
+                        </li>
+                    }
+                })}
+            </ul>
+        </nav>
     }
 }

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Kalam:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 @import "tailwindcss" source("../src");
 
@@ -6,7 +7,7 @@
 
 /*
 @custom-variant dark (&:where(.dark, .dark *));
-*/
+ */
 
 @theme {
   --breakpoint-mobile: 640px;
@@ -16,7 +17,7 @@
   /* Custom Fonts */
   --font-sans: "Helvetica Neue", "Helvetica", "Graphik", "Arial", sans-serif;
   --font-serif: "Merriweather", serif;
-  --font-mono: "ui-monospace", "SFMono-Regular";
+  --font-mono: "Fira Code", "ui-monospace", "SFMono-Regular", monospace;
   --font-display: "Oswald", "ui-serif";
   --font-handwriting: "Niconne";
   --font-modern: "Moderustic";
@@ -86,34 +87,189 @@
   --color-mocha-crust: #11111b;
 }
 
+@layer components {
+  .markdown pre {
+    /* Use your defined --font-mono which now points to Fira Code */
+    @apply font-mono bg-mocha-base dark:bg-mocha-mantle text-latte-text dark:text-mocha-text p-4 overflow-x-auto rounded-md my-6 antialiased md:subpixel-antialiased;
+    /* Enable Fira Code Ligatures */
+    font-variant-ligatures: discretionary-ligatures;
+    font-feature-settings: "liga" on, "calt" on;
+  }
+
+  .markdown :not(pre) > code {
+    @apply font-mono bg-latte-surface0 dark:bg-mocha-surface0 text-latte-red dark:text-just-red px-1.5 py-0.5 rounded text-[0.9em];
+
+    /* Subtle ligatures for inline code too */
+    font-variant-ligatures: normal;
+    font-feature-settings: "liga" on, "calt" on;
+  }
+}
+
 /* 5. Base Styles */
 @layer base {
   body {
     @apply h-lvh p-2 dark:bg-mocha-crust bg-latte-crust dark:text-mocha-text text-latte-text font-sans;
   }
 
-  .markdown-body {
-    @apply bg-latte-crust text-latte-text dark:bg-mocha-crust dark:text-mocha-text;
+  .font-mono {
+    font-variant-ligatures: normal;
+    font-feature-settings: "liga" on, "calt" on;
   }
 
-  .markdown-body pre {
-    @apply bg-mocha-base dark:bg-mocha-mantle text-latte-text dark:text-mocha-text p-4 overflow-x-auto rounded-md my-6 font-mono;
-  }
-
-  :not(pre) > code {
-    @apply bg-latte-surface0 dark:bg-mocha-surface0 text-latte-red dark:text-just-red px-1.5 py-0.5 rounded text-sm font-mono;
-  }
+  /* .markdown pre { */
+  /*   @apply bg-mocha-base dark:bg-mocha-mantle text-latte-text dark:text-mocha-text p-4 overflow-x-auto rounded-md my-6 font-mono; */
+  /* } */
+  /**/
+  /* :not(pre) > code { */
+  /*   @apply bg-latte-surface0 dark:bg-mocha-surface0 text-latte-red dark:text-just-red px-1.5 py-0.5 rounded text-sm font-mono; */
+  /* } */
 
   a[aria-current="page"], a[aria-current="true"] {
     @apply text-just-red;
   }
 
+  p {
+    @apply antialiased md:subpixel-antialiased;
+  }
+
   p a {
     @apply text-latte-red dark:text-just-red underline;
   }
+
+  .markdown h1 {
+    @apply text-5xl my-6 font-black;
+  }
+  .markdown h2 {
+    @apply text-4xl my-6 font-black;
+  }
+  .markdown h3 {
+    @apply text-3xl my-6 font-black;
+  }
+  .markdown h4 {
+    @apply text-2xl my-6 font-black;
+  }
+  .markdown h5 {
+    @apply text-2xl my-6 font-black;
+  }
+  .markdown h6 {
+    @apply text-2xl my-6 font-black;
+  }
+
+  .markdown ul {
+    @apply py-2 list-disc list-outside ml-6;
+  }
+
+  .markdown ol {
+    @apply py-2 list-decimal list-outside ml-6;
+  }
+
+  /* The Container List Item */
+  .markdown li:has(input[type="checkbox"]) {
+    @apply list-none ml-0 flex items-center; /* Removes bullets and aligns items */
+  }
+
+  /* The Checkbox */
+  .markdown li input[type="checkbox"] {
+    /* Using your Mocha Green */
+    @apply mr-2 h-4 w-4 cursor-pointer appearance-none rounded 
+    border-2 border-mocha-red bg-transparent
+    checked:bg-mocha-blue checked:border-mocha-blue
+    focus:ring-offset-0 focus:ring-1 focus:ring-mocha-blue
+    transition-all duration-200;
+
+    vertical-align: middle;
+    position: relative;
+  }
+
+  /* Optional: Custom Checkmark (since appearance-none hides the default) */
+  .markdown li input[type="checkbox"]:checked::after {
+    content: '';
+    @apply absolute left-[4px] top-[1px] w-[5px] h-[9px] 
+    border-white border-r-2 border-b-2 rotate-45;
+  }
+
+  /* Style for Disabled state */
+  .markdown li input[type="checkbox"]:disabled {
+    @apply cursor-not-allowed;
+  }
+
+  .markdown .spoiler {
+    /* Base style: Hide the text */
+    @apply cursor-help rounded-sm px-2 transition-all duration-300;
+    @apply bg-mocha-red text-transparent select-none;
+
+    /* Optional: subtle blur effect */
+    filter: blur(4px);
+  }
+
+  /* Reveal on Hover */
+  .markdown .spoiler:hover {
+    @apply text-mocha-green bg-transparent select-auto;
+    filter: blur(0);
+  }
+
+  .markdown .spoiler:active {
+  @apply text-mocha-green bg-transparent;
+  filter: blur(0);
+}
+
+h1:hover a[id^="md-heading-"]::before {
+  content: "#";
+  @apply -ml-8 pr-2 absolute opacity-100;
+}
+h2:hover a[id^="md-heading-"]::before {
+  content: "#";
+  @apply -ml-7 pr-2 absolute opacity-100;
+}
+h3:hover a[id^="md-heading-"]::before {
+  content: "#";
+  @apply -ml-6 pr-2 absolute opacity-100;
+}
+h4:hover a[id^="md-heading-"]::before,
+h5:hover a[id^="md-heading-"]::before,
+h6:hover a[id^="md-heading-"]::before {
+  content: "#";
+  @apply -ml-5 pr-2 absolute opacity-100;
+}
 }
 
 @layer utilities {
+
+  /* General alert container */
+  .markdown-alert {
+    @apply bg-latte-base dark:bg-mocha-base my-4;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border-left: 0.25em solid;
+    border-radius: 0.3rem;
+  }
+
+  .markdown-alert-important{ @apply border-mocha-mauve; }
+  .markdown-alert-important .markdown-alert-title { @apply text-mocha-mauve; }
+
+  .markdown-alert-note{ @apply border-mocha-blue; }
+  .markdown-alert-note .markdown-alert-title { @apply text-mocha-blue; }
+
+  .markdown-alert-tip{ @apply border-mocha-green; }
+  .markdown-alert-tip .markdown-alert-title { @apply text-mocha-green; }
+
+  .markdown-alert-warning{ @apply border-mocha-yellow; }
+  .markdown-alert-warning .markdown-alert-title { @apply text-mocha-yellow; }
+
+  .markdown-alert-caution{ @apply border-mocha-red; }
+  .markdown-alert-caution .markdown-alert-title { @apply text-mocha-red; }
+
+  /* The title (Note, Warning, etc.) */
+  .markdown-alert-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+
+
   .polaroid_wrapper p {
     font-family: 'Kalam', cursive;
     line-height: 1.2;

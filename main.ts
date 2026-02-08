@@ -1,9 +1,9 @@
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import { serveDir } from "https://deno.land/std@0.224.0/http/file_server.ts";
-import init, { render } from "./pkg/yew_blog.js";
+import init, { render } from "./pkg/my_site.js";
 
 // Initialize Wasm
-const wasmUrl = new URL("./pkg/yew_blog_bg.wasm", import.meta.url);
+const wasmUrl = new URL("./pkg/my_site_bg.wasm", import.meta.url);
 await init(wasmUrl);
 
 console.log("Server started running...");
@@ -49,12 +49,12 @@ serve(async (req) => {
     
     <link rel="stylesheet" href="/static/output.css"/>
   
-    <link rel="modulepreload" href="/pkg/yew_blog.js">
-    <link rel="preload" href="/pkg/yew_blog_bg.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
+    <link rel="modulepreload" href="/pkg/my_site.js">
+    <link rel="preload" href="/pkg/my_site_bg.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
 
     <script type="module">
-      import init from "/pkg/yew_blog.js";
-      init("/pkg/yew_blog_bg.wasm");
+      import init from "/pkg/my_site.js";
+      init("/pkg/my_site_bg.wasm");
     </script>
 
     <link rel="icon" href="/static/favicon/favicon.png" type="image/png" />

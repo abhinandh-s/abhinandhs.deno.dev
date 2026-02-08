@@ -23,7 +23,7 @@ Install Age using your favorite plugin manager. For example, with
 -- ~/.config/nvim/lua/plugins/age.lua
 
 {
-    'abhi-xyz/age.nvim',
+    'abhinandh-s/age.nvim',
     cmd = { "Age" },
     config = function()
       local key = require('key')

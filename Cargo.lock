@@ -943,6 +943,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "my-site"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "comrak",
+ "gray_matter",
+ "pulldown-cmark",
+ "serde",
+ "serde_json",
+ "syntect",
+ "walkdir",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+ "yew",
+ "yew-router",
+]
+
+[[package]]
 name = "num-conv"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1982,24 +2001,6 @@ dependencies = [
  "wasm-bindgen-futures",
  "web-sys",
  "yew-macro",
-]
-
-[[package]]
-name = "yew-blog"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "comrak",
- "gray_matter",
- "pulldown-cmark",
- "serde",
- "serde_json",
- "walkdir",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "web-sys",
- "yew",
- "yew-router",
 ]
 
 [[package]]
