@@ -544,8 +544,7 @@ Enjoy your new, secure website!</p>
         <guid>https://abhinandh-s.github.io/articles/hello-world</guid>
         <pubDate>2024-06-26T00:00:00Z</pubDate>
         <description><![CDATA[My first blog entry.]]></description>
-        <content:encoded><![CDATA[<h1>Hello, World!</h1>
-<p>Welcome to my first blog post! This content is written in Markdown and styled
+        <content:encoded><![CDATA[<p>Welcome to my first blog post! This content is written in Markdown and styled
 using GitHub Flavored Markdown.</p>
 <h1>Heading 01</h1>
 <h2>Heading 02</h2>

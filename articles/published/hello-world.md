@@ -5,8 +5,6 @@ updated_at: 2024-06-26
 snippet: My first blog entry.
 ---
 
-# Hello, World!
-
 Welcome to my first blog post! This content is written in Markdown and styled
 using GitHub Flavored Markdown.
 

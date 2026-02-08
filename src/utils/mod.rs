@@ -119,8 +119,6 @@ pub fn markdown_to_html(source: &str) -> (Toc, String) {
 
     let mut plugins = comrak::options::Plugins::default();
     plugins.render.codefence_syntax_highlighter = Some(&adapter);
-
-    let th = include_str!("../../static/themes/Catppuccin Mocha.tmTheme");
     
     let arena = comrak::Arena::new();
     let root = comrak::parse_document(&arena, source, &options);

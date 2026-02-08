@@ -107,6 +107,12 @@
 
 /* 5. Base Styles */
 @layer base {
+
+  html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Prevents the sticky header from covering the heading when you click a link */
+}
+
   body {
     @apply h-lvh p-2 dark:bg-mocha-crust bg-latte-crust dark:text-mocha-text text-latte-text font-sans;
   }

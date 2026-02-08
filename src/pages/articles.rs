@@ -82,6 +82,16 @@ pub fn article_index() -> Html {
 //                                            this page
 #[function_component(Article)]
 pub fn article(props: &ArticleProps) -> Html {
+        let post_id = props.post_id.clone();
+
+        // This effect runs whenever the post_id changes
+    use_effect_with(post_id.clone(), |_| {
+        if let Some(window) = web_sys::window() {
+            window.scroll_to_with_x_and_y(0.0, 0.0);
+        }
+        || () // Cleanup (not needed here)
+    });
+
     match get_article_by_id(&props.post_id) {
         Some(post) => {
             let (toc_items, html_content) = markdown_to_html(&post.content);
@@ -140,9 +150,9 @@ pub fn table_of_contents(props: &TocProps) -> Html {
                     html! {
                         <li key={item.id.clone()} style={left_padding}>
                             <a href={format!("#{}", item.id)} 
-                               class="block py-1 text-subtext0 hover:text-just-red transition-colors text-sm border-l-2 border-transparent hover:border-just-red pl-2 -ml-[1px]">
-                                { &item.text }
-                            </a>
+   class="block py-1 text-subtext0 hover:text-just-red transition-all duration-200 text-sm border-l-2 border-transparent hover:border-just-red pl-2 -ml-[1px]">
+    { &item.text }
+</a>
                         </li>
                     }
                 })}
