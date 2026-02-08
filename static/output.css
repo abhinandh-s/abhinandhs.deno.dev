@@ -493,6 +493,13 @@
       }
     }
   }
+  .hover\:border-just-red {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-just-red);
+      }
+    }
+  }
   .hover\:text-just-red {
     &:hover {
       @media (hover: hover) {

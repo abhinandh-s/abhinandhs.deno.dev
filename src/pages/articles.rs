@@ -140,7 +140,7 @@ pub fn table_of_contents(props: &TocProps) -> Html {
                     html! {
                         <li key={item.id.clone()} style={left_padding}>
                             <a href={format!("#{}", item.id)} 
-                               class="block py-1 text-subtext0 hover:text-red transition-colors text-sm border-l-2 border-transparent hover:border-red pl-2 -ml-[1px]">
+                               class="block py-1 text-subtext0 hover:text-just-red transition-colors text-sm border-l-2 border-transparent hover:border-just-red pl-2 -ml-[1px]">
                                 { &item.text }
                             </a>
                         </li>
