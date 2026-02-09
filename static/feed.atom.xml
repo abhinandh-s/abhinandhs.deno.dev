@@ -50,17 +50,50 @@ But the load time was painful.</p>
     <id>https://abhinandh-s.github.io/articles/age-nvim</id>
     <updated>2024-12-10T00:00:00Z</updated>
     <summary>Neovim plugin for encrypting and decrypting text files inside neovim using `age` with ease.</summary>
-    <content type="html"><![CDATA[<p><strong>Neovim plugin for encrypting and decrypting text files inside neovim using
-<code>age</code> with ease.</strong></p>
-<h1>Table of Contents</h1>
+    <content type="html"><![CDATA[<p><strong>Neovim plugin for encrypting and decrypting text files inside neovim using <a href="https://github.com/FiloSottile/age">age</a> with ease.</strong></p>
+<h2>Installation</h2>
+<blockquote>
+<p>[!WARNING]
+Master branch supports Neovim version &gt;= 0.11</p>
+</blockquote>
+<pre style="background-color:#2b303b;"><code class="language-lua"><span style="color:#c0c5ce;">  </span><span style="color:#d08770;">...  
+</span><span style="color:#c0c5ce;">  &#39;</span><span style="color:#a3be8c;">abhinandh-s/age.nvim</span><span style="color:#c0c5ce;">&#39;,
+</span><span style="color:#c0c5ce;">  branch = &quot;</span><span style="color:#a3be8c;">nvim-v10</span><span style="color:#c0c5ce;">&quot;, </span><span style="color:#65737e;">-- pin branch for Neovim version 0.10
+</span><span style="color:#c0c5ce;">  </span><span style="color:#d08770;">...
+</span></code></pre>
+<p>Install Age using your favorite plugin manager. For example, with <a href="https://github.com/folke/lazy.nvim">lazy.nvim</a>:</p>
+<h3>Dependencies</h3>
 <ul>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#what-is-age">What is age?</a></li>
+<li><strong>None</strong></li>
 </ul>
-<h1>Installation</h1>
-<p>Install Age using your favorite plugin manager. For example, with
-<a href="https://github.com/folke/lazy.nvim">lazy.nvim</a>:</p>
+<blockquote>
+<p>[!NOTE]
+<code>age.nvim</code> does not require the <code>age</code> CLI to be installed separately.
+Everything needed for encryption and decryption is handled within the plugin itself.</p>
+</blockquote>
+<h3>config via env variable</h3>
+<pre style="background-color:#2b303b;"><code class="language-lua"><span style="color:#65737e;">-- ~/.config/nvim/lua/plugins/age.lua
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">    &#39;</span><span style="color:#a3be8c;">abhinandh-s/age.nvim</span><span style="color:#c0c5ce;">&#39;,
+</span><span style="color:#c0c5ce;">    cmd = { &quot;</span><span style="color:#a3be8c;">Age</span><span style="color:#c0c5ce;">&quot; },
+</span><span style="color:#c0c5ce;">    config = </span><span style="color:#b48ead;">function</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">local</span><span style="color:#c0c5ce;"> public_key = </span><span style="color:#96b5b4;">os.getenv</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">AGE_PUBLIC_KEY</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">local</span><span style="color:#c0c5ce;"> private_key = </span><span style="color:#96b5b4;">os.getenv</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">AGE_PRIVATE_KEY</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">      </span><span style="color:#96b5b4;">require</span><span style="color:#c0c5ce;">(&#39;</span><span style="color:#a3be8c;">age</span><span style="color:#c0c5ce;">&#39;).setup({
+</span><span style="color:#c0c5ce;">        encrypt_and_del = </span><span style="color:#d08770;">true</span><span style="color:#c0c5ce;">, </span><span style="color:#65737e;">-- will remove the original file after encrypting.
+</span><span style="color:#c0c5ce;">        public_key = public_key,
+</span><span style="color:#c0c5ce;">        private_key = private_key,
+</span><span style="color:#c0c5ce;">      })
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">end
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<blockquote>
+<p>[!TIP]
+check examples dir for non panic version</p>
+</blockquote>
+<h3>config via lua file</h3>
 <pre style="background-color:#2b303b;"><code class="language-lua"><span style="color:#65737e;">-- ~/.config/nvim/lua/plugins/age.lua
 </span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">{
@@ -83,7 +116,7 @@ But the load time was painful.</p>
 </span><span style="color:#c0c5ce;">  private_key = &quot;</span><span style="color:#a3be8c;">AGE-SECRET-KEY-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><span style="color:#c0c5ce;">&quot;,
 </span><span style="color:#c0c5ce;">}
 </span></code></pre>
-<h1>Usage</h1>
+<h2>Usage</h2>
 <p>Age provides the <code>:Age</code> command with the following syntax:</p>
 <pre style="background-color:#2b303b;"><code class="language-vim"><span style="color:#c0c5ce;">:Age [action]
 </span></code></pre>
@@ -96,44 +129,97 @@ But the load time was painful.</p>
 </ul>
 </li>
 </ul>
-<h2>Examples:</h2>
+<h4>Examples:</h4>
 <ul>
 <li>Generates an age key pair into key.txt in current working directory.</li>
 </ul>
 <pre style="background-color:#2b303b;"><code class="language-vim"><span style="color:#c0c5ce;">:Age genkey
 </span></code></pre>
 <ul>
-<li>Kills the current buffer and switches to a previous buffer or creates a
-scratch buffer in case there is no buffer to switch, then encrypts the file
-with the provided age key.</li>
+<li>Kills the current buffer and switches to a previous buffer or creates a scratch buffer in case there is no buffer to switch, then encrypts the file with the provided age key.</li>
 </ul>
 <pre style="background-color:#2b303b;"><code class="language-vim"><span style="color:#c0c5ce;">:Age encrypt
 </span></code></pre>
 <ul>
-<li>Decrypts the currently opened encrypted file, and switches to the decrypted
-file.</li>
+<li>Decrypts the currently opened encrypted file, and switches to the decrypted file.</li>
 </ul>
 <pre style="background-color:#2b303b;"><code class="language-vim"><span style="color:#c0c5ce;">:Age decrypt
 </span></code></pre>
+<p>You can use age api in nvim configs as:</p>
+<p>age.nvim provides 2 apis -</p>
+<ul>
+<li><code>decrypt_to_string</code> -- this uses private key provided in setup config</li>
+<li><code>decrypt_to_string_with_identities</code> -- takes from file</li>
+</ul>
+<pre style="background-color:#2b303b;"><code class="language-lua"><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;"> {
+</span><span style="color:#c0c5ce;">  {
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#a3be8c;">folke/tokyonight.nvim</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    dependencies = {
+</span><span style="color:#c0c5ce;">      &#39;</span><span style="color:#a3be8c;">abhinandh-s/age.nvim</span><span style="color:#c0c5ce;">&#39; </span><span style="color:#65737e;">-- # add age as dependency
+</span><span style="color:#c0c5ce;">    },
+</span><span style="color:#c0c5ce;">    config = </span><span style="color:#b48ead;">function</span><span style="color:#c0c5ce;">()
+</span><span style="color:#c0c5ce;">      </span><span style="color:#b48ead;">local</span><span style="color:#c0c5ce;"> age = </span><span style="color:#96b5b4;">require</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">age</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">      </span><span style="color:#65737e;">---------
+</span><span style="color:#c0c5ce;">      </span><span style="color:#65737e;">-- api 01 
+</span><span style="color:#c0c5ce;">      </span><span style="color:#65737e;">---------
+</span><span style="color:#c0c5ce;">      age.setup({
+</span><span style="color:#c0c5ce;">          private_key = &quot;</span><span style="color:#a3be8c;">private_key</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">        })
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">      </span><span style="color:#65737e;">-- Load the secret
+</span><span style="color:#c0c5ce;">      </span><span style="color:#b48ead;">local</span><span style="color:#c0c5ce;"> secret = age.decrypt_to_string(vim.fn.expand(&quot;</span><span style="color:#a3be8c;">~/.config/nvim/top_secret.txt.age</span><span style="color:#c0c5ce;">&quot;))
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">      </span><span style="color:#96b5b4;">print</span><span style="color:#c0c5ce;">(secret)
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">      </span><span style="color:#65737e;">---------
+</span><span style="color:#c0c5ce;">      </span><span style="color:#65737e;">-- api 02 
+</span><span style="color:#c0c5ce;">      </span><span style="color:#65737e;">---------
+</span><span style="color:#c0c5ce;">      </span><span style="color:#b48ead;">local</span><span style="color:#c0c5ce;"> secret_02 = age.decrypt_to_string_with_identities(
+</span><span style="color:#c0c5ce;">        vim.fn.expand(&quot;</span><span style="color:#a3be8c;">~/.config/nvim/top_secret.txt.age</span><span style="color:#c0c5ce;">&quot;),
+</span><span style="color:#c0c5ce;">        {
+</span><span style="color:#c0c5ce;">          vim.fn.expand(&quot;</span><span style="color:#a3be8c;">~/.local/share/age/key.txt</span><span style="color:#c0c5ce;">&quot;),
+</span><span style="color:#c0c5ce;">        }
+</span><span style="color:#c0c5ce;">      )
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">      </span><span style="color:#96b5b4;">print</span><span style="color:#c0c5ce;">(secret_02)
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">end</span><span style="color:#c0c5ce;">,
+</span><span style="color:#c0c5ce;">  },
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<blockquote>
+<p>[!NOTE]
+If you have any suggestions, please let me know.</p>
+</blockquote>
 <h2>What is age?</h2>
-<p><a href="https://age-encryption.org/">age</a> is a simple, modern and secure file
-encryption tool.</p>
-<p>It features small explicit keys, no config options, and UNIX-style
-composability.</p>
-<h2>Why Choose Age Over GPG?</h2>
+<p><a href="https://age-encryption.org/">age</a> is a simple, modern and secure file encryption tool.</p>
+<p>It features small explicit keys, no config options, and UNIX-style composability.</p>
+<h3>Why Choose Age Over GPG?</h3>
 <ol>
-<li><strong>Simplicity</strong>: Age has a straightforward syntax and intuitive design, making
-it easier to use without extensive documentation.</li>
-<li><strong>Modern Cryptography</strong>: Age uses state-of-the-art cryptographic algorithms
-like X25519, ChaCha20-Poly1305, and HMAC-SHA256, ensuring robust security.</li>
-<li><strong>Minimal Attack Surface</strong>: Age's codebase is minimal and easier to audit
-compared to the complex and extensive GPG ecosystem.</li>
-<li><strong>Portable Keys</strong>: Age uses compact, user-friendly key formats, which are
-easy to manage and transfer.</li>
-<li><strong>Focused Use Case</strong>: Age is purpose-built for encrypting files securely and
-efficiently, without the additional complexity of key management and email
-encryption that GPG supports.</li>
+<li><strong>Simplicity</strong>: Age has a straightforward syntax and intuitive design, making it easier to use without extensive documentation.</li>
+<li><strong>Modern Cryptography</strong>: Age uses state-of-the-art cryptographic algorithms like X25519, ChaCha20-Poly1305, and HMAC-SHA256, ensuring robust security.</li>
+<li><strong>Minimal Attack Surface</strong>: Age's codebase is minimal and easier to audit compared to the complex and extensive GPG ecosystem.</li>
+<li><strong>Portable Keys</strong>: Age uses compact, user-friendly key formats, which are easy to manage and transfer.</li>
+<li><strong>Focused Use Case</strong>: Age is purpose-built for encrypting files securely and efficiently, without the additional complexity of key management and email encryption that GPG supports.</li>
 </ol>
+<h2>License</h2>
+<p>Licensed under <!-- raw HTML omitted -->MIT license<!-- raw HTML omitted -->.</p>
+<p>Copyright (c) 2025 Abhinandh S</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
 ]]></content>
   </entry>
 
