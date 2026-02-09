@@ -24,7 +24,8 @@ Well that was too much to ask for.
 
 
 The only option for rust was to build a website
-using web assembly. I managed to get a site up and running on Github Pages.
+using web assembly. I took a look at many frameworks and finally settled on **yew.rs**.
+I managed to get a site up and running on Github Pages.
 But the load time was painful.
 
 
@@ -37,7 +38,9 @@ It served me for like 2 years.
 ### The 2026 Breakthrough
 
 
-This year, I revisited my original dream. But this time, I finally managed to "duct-tape" all my requirements together into a high-performance stack. All because Deno now supports web assembly.
+This year, I revisited my original dream. But this time, 
+I finally managed to "duct-tape" all my requirements together into a high-performance stack.
+All because Deno now supports web assembly. Now i am back on yew.rs again.
 
 - [x] Built in rust  => yew.rs
 - [x] Free deployment  => Deno deploy
@@ -47,3 +50,8 @@ This year, I revisited my original dream. But this time, I finally managed to "d
 
 * **Live Site:** [abhinandhs.deno.dev](https://abhinandhs.deno.dev)
 * **Source Code:** [GitHub Repository](https://github.com/abhinandh-s/abhinandhs.deno.dev)
+
+I have put a close to bare minimum yew on deno setup - 
+
+* **Live Site:** [abhi.deno.dev](https://abhi.deno.dev)
+* **Source Code:** [GitHub Repository](https://github.com/abhinandh-s/yew-deno)

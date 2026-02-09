@@ -1,2 +1,5 @@
 /target
 /dist
+
+/static/feed.*
+/static/output.css
