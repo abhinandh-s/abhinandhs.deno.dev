@@ -16,8 +16,8 @@ pub fn about_page() -> Html {
                 <div class="pt-8"></div>
                 <p class="">
                     { "Some of my favorite movies and series are listed here: " }
-                    <Link<Route> 
-                        to={Route::Movies} 
+                    <Link<Route>
+                        to={Route::Movies}
                         classes="text-just-red dark:text-just-red underline transition-colors duration-200"
                     >
                         { "Movies" }

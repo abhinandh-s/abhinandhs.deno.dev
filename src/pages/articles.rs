@@ -9,8 +9,9 @@ use yew::prelude::*;
 use yew_router::prelude::Link;
 
 use crate::route::Route;
-use crate::utils::{TocItem, get_article_by_id, get_date, markdown_to_html};
+use crate::utils::{get_article_by_id, get_date, markdown_to_html};
 
+#[rustfmt::skip]
 #[function_component(ArticleEntryWithDate)]
 pub fn article_entry_with_date(props: &ArticleProps) -> Html {
     match get_article_by_id(&props.post_id) {
@@ -51,6 +52,101 @@ struct QueryParams {
     tag: Option<String>,
 }
 
+#[derive(Properties, PartialEq)]
+pub struct SearchBarProps {
+    pub value: String,
+    pub on_input: Callback<InputEvent>,
+    pub on_clear: Callback<MouseEvent>,
+    pub result_count: usize,
+}
+
+#[function_component(SearchBar)]
+fn search_bar(props: &SearchBarProps) -> Html {
+    html! {
+    // --- Search Bar ---
+              <div class="mt-8 relative">
+                <input
+                    type="text"
+                    placeholder="Search articles..."
+                    value={props.value.clone()}
+                    class="w-full bg-surface0 text-text p-3 rounded-lg border border-surface1 focus:border-just-red outline-none transition-all"
+                    oninput={props.on_input.clone()}
+                />
+
+                               if !props.value.is_empty() {
+                                   <span class="absolute right-12 top-3">
+                                   { format!("{} found", props.result_count) }
+                                   </span>
+                    <button
+                        onclick={props.on_clear.clone()}
+                        class="absolute right-3 top-3 text-subtext0 hover:text-just-red transition-colors"
+                    >
+                        // A simple "X" icon
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-x-square">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                    </svg>
+                    </button>
+                }
+              </div>
+    }
+}
+
+#[derive(Properties, PartialEq)]
+pub struct EmptyStateProps {
+    pub on_reset: Callback<MouseEvent>,
+}
+
+#[function_component(EmptyState)]
+fn empty_state(props: &EmptyStateProps) -> Html {
+    html! {
+        <div class="text-center py-20">
+            <p class="text-subtext0 mb-4 text-lg">{"No articles match your search."}</p>
+            <button
+                onclick={props.on_reset.clone()}
+                class="px-6 py-2 bg-surface1 hover:bg-just-red hover:text-base00 rounded-full transition-all duration-300 font-medium"
+            >
+                {"Reset all filters"}
+            </button>
+        </div>
+    }
+}
+
+#[derive(Properties, PartialEq)]
+pub struct ArticleListProps {
+    pub articles: Vec<crate::utils::Article>, // Adjust type path as needed
+}
+
+#[function_component(ArticleList)]
+fn article_list(props: &ArticleListProps) -> Html {
+    html! {
+        <ul class="mt-8">
+            { for props.articles.iter().map(|article| {
+                let parts: Vec<&str> = article.matter.published_at.split('-').collect();
+                html! {
+                    <ArticleEntryWithDate
+                        key={article.id.clone()}
+                        year={parts.first().unwrap_or(&"").to_string()}
+                        month={parts.get(1).unwrap_or(&"").to_string()}
+                        post_id={article.id.clone()}
+                    />
+                }
+            })}
+        </ul>
+    }
+}
+
+#[rustfmt::skip]
 #[function_component(ArticleIndex)]
 pub fn article_index() -> Html {
     let search_query = use_state(String::new);
@@ -75,6 +171,16 @@ pub fn article_index() -> Html {
         let search_query = search_query.clone();
         Callback::from(move |tag: String| {
             search_query.set(format!("#{}", tag)); // Prepend # for tag search
+        })
+    };
+
+    let navigator = yew_router::hooks::use_navigator().unwrap();
+    let on_clear = {
+        let search_query = search_query.clone();
+        let navigator =  navigator.clone();
+        Callback::from(move |_| {
+            search_query.set(String::new());
+            navigator.replace(&Route::ArticlesRoute);
         })
     };
 
@@ -134,38 +240,19 @@ pub fn article_index() -> Html {
             { "Abhi's Blog" }<span class="text-just-red">{ "." }</span>
           </h1>
 
-          // --- Search Bar ---
-          <div class="mt-8 relative">
-            <input
-                type="text"
-                placeholder="Search articles..."
-                class="w-full bg-surface0 text-text p-3 rounded-lg border border-surface1 focus:border-just-red outline-none transition-all"
-                oninput={on_input}
-            />
-            <span class="absolute right-3 top-3 text-subtext0">
-                { format!("{} found", filtered_articles.len()) }
-            </span>
-          </div>
+          <SearchBar
+            value={(*search_query).clone()} 
+            on_input={on_input} 
+            on_clear={on_clear.clone()} 
+            result_count={filtered_articles.len()}
+          />
 
           <TagCloud on_tag_click={on_tag_click} />
 
-          <ul class="mt-8">
-            {
-              for filtered_articles.clone().into_iter().map(|article| {
-                let parts: Vec<&str> = article.matter.published_at.split('-').collect();
-                html! {
-                    <ArticleEntryWithDate
-                        year={parts[0].to_string()}
-                        month={parts[1].to_string()}
-                        post_id={article.id}
-                    />
-                }
-              })
-            }
-          </ul>
-
           if filtered_articles.is_empty() {
-              <p class="text-center text-subtext0 mt-10">{"No articles match your search."}</p>
+            <EmptyState on_reset={on_clear} />
+          } else {
+            <ArticleList articles={filtered_articles} />
           }
 
           <div class="border-b border-surface1"></div>
@@ -178,6 +265,7 @@ pub fn article_index() -> Html {
 // https://abhinandhs.deno.dev/articles/:post
 //                                            ^
 //                                            this page
+#[rustfmt::skip]
 #[function_component(Article)]
 pub fn article(props: &ArticleProps) -> Html {
     let post_id = props.post_id.clone();
@@ -247,7 +335,8 @@ pub fn article(props: &ArticleProps) -> Html {
 
                               <div class="flex flex-col lg:flex-row relative max-w-7xl mx-auto w-full">
               <aside class="max-tablet:hidden w-64 flex-shrink-0 sticky top-20 self-start h-fit p-4">
-                      <TableOfContents toc_items={toc_items} />
+                 //     <TableOfContents  />
+       <crate::components::toc::TableOfContents toc_items={toc_items} />
             <TagCloud on_tag_click={&on_tag_click} />
                   </aside>
 
@@ -275,42 +364,12 @@ pub fn article(props: &ArticleProps) -> Html {
 }
 
 #[derive(Properties, PartialEq)]
-pub struct TocProps {
-    pub toc_items: Vec<TocItem>,
-}
-
-#[function_component(TableOfContents)]
-pub fn table_of_contents(props: &TocProps) -> Html {
-    html! {
-            <nav class="toc-container p-4 bg-transparent">
-                <h3 class="text-subtext1 font-bold mb-4 uppercase text-xs tracking-widest">{"On this page"}</h3>
-                <ul class="space-y-2 list-none border-l border-surface1 ml-2">
-                    { for props.toc_items.iter().map(|item| {
-                        // Calculate indentation based on level (H1 = 0, H2 = 4, H3 = 8...)
-                        // Note: In Tailwind, dynamic strings like ml-{x} must be in your safelist
-                        // or handled via style if the value is truly dynamic.
-                        let left_padding = format!("padding-left: {}rem", (item.level as f32 - 1.0) * 0.75);
-
-                        html! {
-                            <li key={item.id.clone()} style={left_padding}>
-                                <a href={format!("#{}", item.id)}
-       class="block py-1 text-subtext0 hover:text-just-red transition-all duration-200 text-sm border-l-2 border-transparent hover:border-just-red pl-2 -ml-[1px]">
-        { &item.text }
-    </a>
-                            </li>
-                        }
-                    })}
-                </ul>
-            </nav>
-        }
-}
-
-#[derive(Properties, PartialEq)]
 pub struct TagCloudProps {
     #[prop_or_default]
     pub on_tag_click: Callback<String>,
 }
 
+#[rustfmt::skip]
 #[function_component(TagCloud)]
 pub fn tag_cloud(props: &TagCloudProps) -> Html {
     let tags_map = crate::utils::get_articles_by_tag();
@@ -351,6 +410,8 @@ pub struct CTagCloudProps {
     pub on_tag_click: Callback<String>,
     tags: Option<Vec<String>>,
 }
+
+#[rustfmt::skip]
 #[function_component(CTagCloud)]
 pub fn c_article_tag_cloud(props: &CTagCloudProps) -> Html {
     let tags_map = props.tags.clone().unwrap_or_default();

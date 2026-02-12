@@ -1,5 +1,6 @@
 use yew::prelude::*;
 
+#[rustfmt::skip]
 #[function_component(Footer)]
 pub fn footer() -> Html {
     html! {

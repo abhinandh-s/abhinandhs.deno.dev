@@ -87,7 +87,10 @@ pub fn get_articles_by_tag() -> HashMap<String, Vec<Article>> {
     for article in articles {
         if let Some(tags) = &article.matter.tags {
             for tag in tags {
-                tag_map.entry(tag.clone()).or_default().push(article.clone());
+                tag_map
+                    .entry(tag.clone())
+                    .or_default()
+                    .push(article.clone());
             }
         }
     }
@@ -100,31 +103,41 @@ InspiredGitHub from here
 Solarized (dark) and Solarized (light)
 */
 pub fn markdown_to_html(source: &str) -> (Toc, String) {
+    let latte = (
+        "latte",
+        include_str!("../../static/themes/Catppuccin Latte.tmTheme"),
+    );
+    let frappe = (
+        "frappe",
+        include_str!("../../static/themes/Catppuccin Frappe.tmTheme"),
+    );
+    let macchiato = (
+        "macchiato",
+        include_str!("../../static/themes/Catppuccin Macchiato.tmTheme"),
+    );
+    let mocha = (
+        "mocha",
+        include_str!("../../static/themes/Catppuccin Mocha.tmTheme"),
+    );
 
-    let latte = ("latte", include_str!("../../static/themes/Catppuccin Latte.tmTheme"));
-    let frappe = ("frappe", include_str!("../../static/themes/Catppuccin Frappe.tmTheme"));
-    let macchiato = ("macchiato", include_str!("../../static/themes/Catppuccin Macchiato.tmTheme"));
-    let mocha = ("mocha", include_str!("../../static/themes/Catppuccin Mocha.tmTheme"));
-  
     // 2. Create a ThemeSet and add your theme to it
     let mut themeset = ThemeSet::load_defaults();
-    
+
     for (name, theme) in [latte, frappe, macchiato, mocha] {
         let mut cursor = std::io::Cursor::new(theme);
-        let custom_theme = ThemeSet::load_from_reader(&mut cursor)
-            .expect("Failed to parse theme file");
+        let custom_theme =
+            ThemeSet::load_from_reader(&mut cursor).expect("Failed to parse theme file");
 
-        themeset.themes.insert(format!("catppuccin-{name}"), custom_theme);
-
-
+        themeset
+            .themes
+            .insert(format!("catppuccin-{name}"), custom_theme);
     }
 
     let adapter = SyntectAdapterBuilder::new()
         .theme_set(themeset) // Use the set containing your theme
         .theme("catppuccin-mocha") // Select it by the key used above
-                                                   // .theme_set(th_set)
+        // .theme_set(th_set)
         .build();
-
 
     let mut options = comrak::Options::default();
     options.extension.strikethrough = true;
@@ -135,7 +148,7 @@ pub fn markdown_to_html(source: &str) -> (Toc, String) {
 
     let mut plugins = comrak::options::Plugins::default();
     plugins.render.codefence_syntax_highlighter = Some(&adapter);
-    
+
     let arena = comrak::Arena::new();
     let root = comrak::parse_document(&arena, source, &options);
 
@@ -186,13 +199,10 @@ pub fn markdown_to_html(source: &str) -> (Toc, String) {
         }
     }
 
-    (
-        toc,
-        html_output,
-    )
+    (toc, html_output)
 }
 
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub struct TocItem {
     pub level: u8,
     pub text: String,

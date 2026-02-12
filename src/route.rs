@@ -10,7 +10,11 @@ pub enum Route {
     #[at("/articles")]
     ArticlesRoute,
     #[at("/articles/:year/:month/:id")]
-    Articles { year: String, month: String, id: String },
+    Articles {
+        year: String,
+        month: String,
+        id: String,
+    },
     #[at("/about")]
     About,
     #[at("/movies")]

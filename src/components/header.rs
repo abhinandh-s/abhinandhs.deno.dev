@@ -6,6 +6,7 @@ use crate::route::Route;
 const LINK_CLASS: &str = "hover:text-just-red aria-[current]:text-just-red";
 const MOBILE_LINK_CLASS: &str = "block py-2 px-4 hover:text-just-red aria-[current]:text-just-red";
 
+#[rustfmt::skip]
 #[function_component(Header)]
 pub fn header() -> Html {
     // State for handling the mobile menu toggle

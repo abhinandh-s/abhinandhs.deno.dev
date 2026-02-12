@@ -54,7 +54,11 @@ serve(async (req) => {
 
     <script type="module">
       import init from "/pkg/my_site.js";
-      init("/pkg/my_site_bg.wasm");
+      async function start() {
+      await init("/pkg/my_site_bg.wasm");
+      // The #[wasm_bindgen(start)] in Rust will trigger automatically after this await
+      }
+      start();
     </script>
 
     <link rel="icon" href="/static/favicon/favicon.png" type="image/png" />
@@ -65,9 +69,7 @@ serve(async (req) => {
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
     <link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom.xml" />
   </head>
-  <body>
-    <div id="app">${appHtml}</div>
-  </body>
+  <body><div id="app">${appHtml}</div></body>
 </html>
 
 

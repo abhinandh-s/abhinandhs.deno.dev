@@ -6,6 +6,7 @@ use yew_router::prelude::*;
 
 use self::pages::articles::Article;
 
+mod atomic;
 mod components;
 mod pages;
 mod route;
@@ -15,9 +16,9 @@ fn switch(routes: Route) -> Html {
     match routes {
         Route::Home => html! { <pages::home::HomePage /> },
         Route::Portfolio => html! { <pages::portfolio::Portfolio /> },
-        Route::Articles { year, month, id } => html! { 
-            <Article year={year} month={month} post_id={id} /> 
-        
+        Route::Articles { year, month, id } => html! {
+            <Article year={year} month={month} post_id={id} />
+
         },
         Route::ArticlesRoute => html! { <pages::articles::ArticleIndex /> },
         Route::About => html! { <pages::about::About /> },
