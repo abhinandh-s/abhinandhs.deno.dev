@@ -1,11 +1,11 @@
 {
     "exclude": [
         ".git",
-        "./dist",
-        "./target",
-        "./dev.tmux",
-        "./justfile",
-        "./flake.nix",
-        "./flake.lock"
+        "dist",
+        "target",
+        "dev.tmux",
+        "justfile",
+        "flake.nix",
+        "flake.lock"
     ]
 }
