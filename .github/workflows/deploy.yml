@@ -55,3 +55,14 @@ jobs:
           project: "abhinandhs"
           entrypoint: "main.ts"
           root: "."
+          # Filter which files to exclude in the deployment
+          # It supports a single file, multiple files separated by a comma or by a newline
+          # Optional.
+          exclude: |
+            .git 
+            dist
+            target
+            dev.tmux
+            justfile
+            flake.*
+            *.md
