@@ -5,6 +5,8 @@ pub struct ArticleProps {
     pub post_id: String,
 }
 
+use wasm_bindgen::prelude::Closure;
+use web_sys::Element;
 use yew::prelude::*;
 use yew_router::prelude::Link;
 
@@ -331,6 +333,9 @@ pub fn article(props: &ArticleProps) -> Html {
 
             html! {
                             <>
+    <CodeCopyManager />
+                                <ReadingProgressBar />
+                              
                               <crate::components::header::Header />
 
                               <div class="flex flex-col lg:flex-row relative max-w-7xl mx-auto w-full">
@@ -444,4 +449,185 @@ pub fn c_article_tag_cloud(props: &CTagCloudProps) -> Html {
             </div>
         </div>
     }
+}
+
+use wasm_bindgen::JsCast;
+
+#[function_component(ReadingProgressBar)]
+fn reading_progress_bar() -> Html {
+    let progress = use_state(|| 0.0);
+
+    {
+        let progress = progress.clone();
+        use_effect_with((), move |_| {
+            let raf_handle = std::rc::Rc::new(std::cell::RefCell::new(None::<i32>));
+
+            let window = web_sys::window().expect("window not found");
+            let document_element = window.document().unwrap().document_element().unwrap();
+
+            let closure_handle = std::rc::Rc::new(std::cell::RefCell::new(None));
+
+            let listener = {
+                let progress = progress.clone();
+                let raf_handle = raf_handle.clone();
+                let document_element = document_element.clone();
+                let closure_handle = closure_handle.clone();
+
+                move |_: web_sys::Event| {
+                    if raf_handle.borrow().is_some() {
+                        return;
+                    }
+
+                    let progress = progress.clone();
+                    let raf_handle_inner = raf_handle.clone();
+                    let document_element = document_element.clone();
+
+                    // Create the closure for rAF
+                    let closure = wasm_bindgen::prelude::Closure::wrap(Box::new(move |_| {
+                        *raf_handle_inner.borrow_mut() = None;
+
+                        let scroll_top = document_element.scroll_top() as f64;
+                        let scroll_height = document_element.scroll_height() as f64;
+                        let client_height = document_element.client_height() as f64;
+
+                        let total = scroll_height - client_height;
+                        if total > 0.0 {
+                            progress.set((scroll_top / total) * 100.0);
+                        }
+                    })
+                        as Box<dyn FnMut(f64)>);
+
+                    let window = web_sys::window().unwrap();
+                    let handle = window
+                        .request_animation_frame(closure.as_ref().unchecked_ref())
+                        .unwrap();
+
+                    *raf_handle.borrow_mut() = Some(handle);
+                    // Keep the closure alive until the next frame
+                    *closure_handle.borrow_mut() = Some(closure);
+                }
+            };
+
+            let scroll_closure = wasm_bindgen::prelude::Closure::wrap(
+                Box::new(listener) as Box<dyn FnMut(web_sys::Event)>
+            );
+
+            window
+                .add_event_listener_with_callback("scroll", scroll_closure.as_ref().unchecked_ref())
+                .unwrap();
+
+            move || {
+                let window = web_sys::window().unwrap();
+                window
+                    .remove_event_listener_with_callback(
+                        "scroll",
+                        scroll_closure.as_ref().unchecked_ref(),
+                    )
+                    .unwrap();
+                if let Some(handle) = *raf_handle.borrow() {
+                    window.cancel_animation_frame(handle).unwrap();
+                }
+            }
+        });
+    }
+
+    html! {
+        <div class="fixed top-0 left-0 w-full h-1 z-[100] pointer-events-none">
+            <div
+                class="h-full bg-just-red transition-all duration-150 ease-out"
+                style={format!("width: {}%; will-change: width; box-shadow: 0 0 8px rgba(237, 135, 150, 0.6);", *progress)}
+            />
+        </div>
+    }
+}
+
+use web_sys::HtmlButtonElement;
+
+#[function_component(CodeCopyManager)]
+pub fn code_copy_manager() -> Html {
+    use_effect(move || {
+        let window = web_sys::window().unwrap();
+        let document = window.document().unwrap();
+
+        // 1. Initial Injection Loop (Buttons + Labels)
+        let pre_tags = document.query_selector_all(".markdown pre").unwrap();
+        for i in 0..pre_tags.length() {
+            if let Some(node) = pre_tags.get(i) {
+                let pre = node.dyn_into::<Element>().unwrap();
+                let _ = pre.class_list().add_1("group"); // Ensure group hover works
+
+                if let Ok(Some(code)) = pre.query_selector("code") {
+                    // Extract Language Label
+                    let class_name = code.class_name();
+                    let lang = class_name
+                        .split_whitespace()
+                        .find(|c| c.to_lowercase().starts_with("language-"))
+                        .map(|f| f.replace("language-", ""))
+                        .unwrap_or_default();
+
+                    // Inject Label if missing
+                    if !lang.is_empty() && pre.query_selector(".code-lang-label").unwrap().is_none() {
+                        let lang_label = document.create_element("span").unwrap();
+                        lang_label.set_class_name("code-lang-label");
+                        lang_label.set_inner_html(&lang);
+                        let _ = pre.append_child(&lang_label);
+                    }
+                }
+
+                // Inject Copy Button if missing
+                if pre.query_selector(".copy-button").unwrap().is_none() {
+                    let btn = document.create_element("button").unwrap();
+                    btn.set_class_name("copy-button");
+                    btn.set_inner_html("Copy");
+                    let _ = pre.append_child(&btn);
+                }
+            }
+        }
+
+        // 2. Setup the click listener
+        // We clone `document` here so it can be moved into the closure
+        let listener = Closure::wrap(Box::new(move |e: web_sys::MouseEvent| {
+            let target = e.target().unwrap().dyn_into::<Element>().unwrap();
+
+            if target.class_name().contains("copy-button") {
+                let btn = target.dyn_into::<HtmlButtonElement>().unwrap();
+                let pre = btn.parent_element().unwrap();
+
+                if let Ok(Some(code)) = pre.query_selector("code") {
+                    let text = code.text_content().unwrap_or_default();
+                    let nav = web_sys::window().unwrap().navigator();
+                    let _ = nav.clipboard().write_text(&text);
+
+                    btn.set_inner_html("Copied!");
+                    btn.class_list().add_1("copied").unwrap();
+
+                    let btn_clone = btn.clone();
+                    let reset_closure = Closure::wrap(Box::new(move || {
+                        btn_clone.set_inner_html("Copy");
+                        btn_clone.class_list().remove_1("copied").unwrap();
+                    }) as Box<dyn FnMut()>);
+
+                    let _ = web_sys::window().unwrap().set_timeout_with_callback_and_timeout_and_arguments_0(
+                        reset_closure.as_ref().unchecked_ref(),
+                        2000,
+                    );
+                    reset_closure.forget();
+                }
+            }
+        }) as Box<dyn FnMut(web_sys::MouseEvent)>);
+
+        // 3. Attach using the original `document` (which was not moved)
+        document
+            .add_event_listener_with_callback("click", listener.as_ref().unchecked_ref())
+            .unwrap();
+
+        let doc_for_cleanup = document.clone();
+        move || {
+            doc_for_cleanup
+                .remove_event_listener_with_callback("click", listener.as_ref().unchecked_ref())
+                .unwrap();
+        }
+    });
+
+    html! {}
 }

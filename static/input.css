@@ -90,7 +90,7 @@
 @layer components {
   .markdown pre {
     /* Use your defined --font-mono which now points to Fira Code */
-    @apply font-mono bg-mocha-base dark:bg-mocha-mantle text-latte-text dark:text-mocha-text p-4 overflow-x-auto rounded-md my-6 antialiased md:subpixel-antialiased;
+    @apply pt-10 relative font-mono bg-mocha-base dark:bg-mocha-mantle text-latte-text dark:text-mocha-text p-4 overflow-x-auto rounded-md my-6 antialiased md:subpixel-antialiased;
     /* Enable Fira Code Ligatures */
     font-variant-ligatures: discretionary-ligatures;
     font-feature-settings: "liga" on, "calt" on;
@@ -102,6 +102,25 @@
     /* Subtle ligatures for inline code too */
     font-variant-ligatures: normal;
     font-feature-settings: "liga" on, "calt" on;
+  }
+
+  .copy-button {
+    @apply absolute top-2 right-2 px-2 text-xs font-medium 
+    bg-mocha-surface0 border border-mocha-surface1 text-mocha-subtext0 rounded-md
+    opacity-60 group-hover:opacity-100 transition-all duration-200
+    hover:text-mocha-blue hover:border-mocha-blue active:scale-95;
+  }
+
+  .copy-button.copied {
+    @apply opacity-100 text-mocha-green border-mocha-green;
+  }
+
+  .code-lang-label {
+    @apply absolute top-0 left-0 px-4 py-1 text-[10px] uppercase tracking-widest
+           text-mocha-yellow font-black select-none pointer-events-none
+           bg-mocha-surface1 rounded-tl-md rounded-br-md shadow-sm;
+    /* Centers it vertically within that 2.5rem header space */
+    line-height: 1.5rem; 
   }
 }
 

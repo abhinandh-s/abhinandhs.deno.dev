@@ -97,33 +97,37 @@ pub fn get_articles_by_tag() -> HashMap<String, Vec<Article>> {
     tag_map
 }
 
+pub struct Theme;
+
+impl Theme {
+    const LATTE: (&str, &str) = (
+        "latte",
+        include_str!("../../static/themes/Catppuccin Latte.tmTheme"),
+    );
+    const FRAPPE: (&str, &str) = (
+        "frappe",
+        include_str!("../../static/themes/Catppuccin Frappe.tmTheme"),
+    );
+    const MACCHIATO: (&str, &str) = (
+        "macchiato",
+        include_str!("../../static/themes/Catppuccin Macchiato.tmTheme"),
+    );
+    const MOCHA: (&str, &str) = (
+        "mocha",
+        include_str!("../../static/themes/Catppuccin Mocha.tmTheme"),
+    );
+}
+
 /*
 base16-ocean.dark,base16-eighties.dark,base16-mocha.dark,base16-ocean.light
 InspiredGitHub from here
 Solarized (dark) and Solarized (light)
 */
 pub fn markdown_to_html(source: &str) -> (Toc, String) {
-    let latte = (
-        "latte",
-        include_str!("../../static/themes/Catppuccin Latte.tmTheme"),
-    );
-    let frappe = (
-        "frappe",
-        include_str!("../../static/themes/Catppuccin Frappe.tmTheme"),
-    );
-    let macchiato = (
-        "macchiato",
-        include_str!("../../static/themes/Catppuccin Macchiato.tmTheme"),
-    );
-    let mocha = (
-        "mocha",
-        include_str!("../../static/themes/Catppuccin Mocha.tmTheme"),
-    );
-
     // 2. Create a ThemeSet and add your theme to it
     let mut themeset = ThemeSet::load_defaults();
 
-    for (name, theme) in [latte, frappe, macchiato, mocha] {
+    for (name, theme) in [Theme::LATTE, Theme::FRAPPE, Theme::MACCHIATO, Theme::MOCHA] {
         let mut cursor = std::io::Cursor::new(theme);
         let custom_theme =
             ThemeSet::load_from_reader(&mut cursor).expect("Failed to parse theme file");

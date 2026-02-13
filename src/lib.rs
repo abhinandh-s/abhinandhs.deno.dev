@@ -18,7 +18,6 @@ fn switch(routes: Route) -> Html {
         Route::Portfolio => html! { <pages::portfolio::Portfolio /> },
         Route::Articles { year, month, id } => html! {
             <Article year={year} month={month} post_id={id} />
-
         },
         Route::ArticlesRoute => html! { <pages::articles::ArticleIndex /> },
         Route::About => html! { <pages::about::About /> },
