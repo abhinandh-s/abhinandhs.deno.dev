@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import { serveDir } from "https://deno.land/std@0.224.0/http/file_server.ts";
-import init, { render } from "./pkg/my_site.js";
+import init, { render } from "./pkg/my_site.mini.js";
 
 // Initialize Wasm
 const wasmUrl = new URL("./pkg/my_site_bg.wasm", import.meta.url);
@@ -49,11 +49,11 @@ serve(async (req) => {
     
     <link rel="stylesheet" href="/static/output.css"/>
   
-    <link rel="modulepreload" href="/pkg/my_site.js">
+    <link rel="modulepreload" href="/pkg/my_site.mini.js">
     <link rel="preload" href="/pkg/my_site_bg.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
 
     <script type="module">
-      import init from "/pkg/my_site.js";
+      import init from "/pkg/my_site.mini.js";
       async function start() {
       await init("/pkg/my_site_bg.wasm");
       // The #[wasm_bindgen(start)] in Rust will trigger automatically after this await

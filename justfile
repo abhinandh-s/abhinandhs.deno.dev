@@ -1,3 +1,6 @@
+minify_js:
+  deno run -A npm:esbuild --minify pkg/my_site.js --outfile=pkg/my_site.mini.js
+
 dev:
   nix develop
 

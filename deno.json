@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "esbuild": "npm:esbuild@0.24.0"
+  },
+  "tasks": {
+    "minify": "deno run -A npm:esbuild --minify pkg/my_site.js --outfile=pkg/my_site.mini.js"
+  }
+}

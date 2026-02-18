@@ -49,6 +49,14 @@ jobs:
           output: static/output.css
           params: "--minify"
 
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: lts
+          cache: true
+
+      - name: Minify with esbuild
+        run: deno run -A npm:esbuild --minify pkg/my_site.js --outfile=pkg/my_site.mini.js
+
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
