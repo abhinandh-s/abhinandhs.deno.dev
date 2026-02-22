@@ -11,5 +11,8 @@ tmux split-window -h -t $SESSION \
 tmux split-window -v -t $SESSION:0.1 \
   'cargo watch -i .gitignore -s "wasm-pack build --target web"'
 
+tmux split-window -v -t $SESSION:0.2 \
+  'deno task minify --watch'
+
 tmux select-layout -t $SESSION tiled
 tmux attach -t $SESSION

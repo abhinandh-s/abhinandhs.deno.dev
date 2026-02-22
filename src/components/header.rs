@@ -1,6 +1,7 @@
 use yew::prelude::*;
 use yew_router::prelude::Link;
 
+use crate::components::theme::ThemeSwitcher;
 use crate::route::Route;
 
 const LINK_CLASS: &str = "hover:text-just-red aria-[current]:text-just-red";
@@ -36,11 +37,14 @@ pub fn header() -> Html {
                 <Link<Route> to={Route::Portfolio} classes={LINK_CLASS}>{ "Portfolio" }</Link<Route>>
                 <Link<Route> to={Route::ArticlesRoute} classes={LINK_CLASS}>{ "Articles" }</Link<Route>>
                 <Link<Route> to={Route::About} classes={LINK_CLASS}>{ "About" }</Link<Route>>
-              </div>
+              
+<ThemeSwitcher />
+                </div>
 
               /* Mobile Hamburger Menu */
               <div class="hidden max-tablet:flex">
                 <div class="pr-3"></div>
+                <ThemeSwitcher />
                 <button onclick={toggle_menu} class="focus:outline-none" aria-label="Open Menu">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
