@@ -27,3 +27,6 @@ watch_css:
 
 watch_wasm:
     cargo watch -i .gitignore -s "wasm-pack build --target web"
+
+[parallel]
+watch_all: watch_css watch_wasm dev_serve minify_js
