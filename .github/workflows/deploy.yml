@@ -60,7 +60,7 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "abhinandhs"
+          project: "notes" # "abhinandhs"
           entrypoint: "main.ts"
           root: "."
           # Filter which files to exclude in the deployment
