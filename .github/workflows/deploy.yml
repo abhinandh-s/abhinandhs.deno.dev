@@ -58,19 +58,18 @@ jobs:
         run: deno run -A npm:esbuild --minify pkg/my_site.js --outfile=pkg/my_site.mini.js
 
       - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "abhinandh-s/cma" # "abhinandhs"
-          entrypoint: "main.ts"
-          root: "."
+        run: deno deploy --org abhinandh-s --app cma --prod --entrypoint main.ts 
+        
+         # root: "."
           # Filter which files to exclude in the deployment
           # It supports a single file, multiple files separated by a comma or by a newline
           # Optional.
-          exclude: |
-            .git 
-            dist
-            target
+         # exclude: |
+         #   .git 
+          # dist
+       #    target
             dev.tmux
-            justfile
-            flake.*
-            *.md
+        #    justfile
+         #   flake.*
+           # *.md
+#
