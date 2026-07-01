@@ -68,7 +68,7 @@ jobs:
          #   .git 
           # dist
        #    target
-            dev.tmux
+          #  dev.tmux
         #    justfile
          #   flake.*
            # *.md
