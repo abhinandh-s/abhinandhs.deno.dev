@@ -77,7 +77,7 @@ jobs:
           destination-github-username: 'abhinandh-s'
           destination-repository-name: 'site'
           user-email: 'abhinandhsuby@proton.me'
-          target-branch: 'main' # Or whichever branch you want to push to
+          target-branch: 'master' # Or whichever branch you want to push to
           commit-message: 'Deploy built assets from Yew project'
 
       # - name: Upload to Deno Deploy
