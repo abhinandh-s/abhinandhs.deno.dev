@@ -63,10 +63,11 @@ jobs:
           # Copy only the files the target repo needs to run the site
           cp -r pkg build_output/
           cp -r static build_output/
+          ls -la
           # If you have an index.html or other assets, copy them too:
           # cp index.html build_output/
           # Clean up unminified files if you don't want them in the new repo
-          rm build_output/pkg/my_site.js
+          # rm build_output/pkg/my_site.js
 
       - name: Push to external repository
         uses: cpina/github-action-push-to-another-repository@main
