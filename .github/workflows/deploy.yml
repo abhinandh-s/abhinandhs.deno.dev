@@ -69,11 +69,9 @@ jobs:
           ls -la build_output/static/
           rm -f build_output/pkg/.gitignore 
           rm -f .gitignore 
-          # If you have an index.html or other assets, copy them too:
           cp main.ts build_output/
           cp deno.json build_output/
-          cp robot.txt build_output/
-          # Clean up unminified files if you don't want them in the new repo
+          cp robots.txt build_output/
           rm build_output/pkg/my_site.js
 
       - name: Push to external repository
