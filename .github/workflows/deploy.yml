@@ -56,9 +56,32 @@ jobs:
 
       - name: Minify with esbuild
         run: deno run -A npm:esbuild --minify pkg/my_site.js --outfile=pkg/my_site.mini.js
+      
+      - name: Gather files for deployment
+        run: |
+          mkdir build_output
+          # Copy only the files the target repo needs to run the site
+          cp -r pkg build_output/
+          cp -r static build_output/
+          # If you have an index.html or other assets, copy them too:
+          # cp index.html build_output/
+          # Clean up unminified files if you don't want them in the new repo
+          rm build_output/pkg/my_site.js
 
-      - name: Upload to Deno Deploy
-        run: deno deploy --org abhinandh-s --app cma --prod --entrypoint main.ts 
+      - name: Push to external repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'build_output'
+          destination-github-username: 'abhinandh-s'
+          destination-repository-name: 'site'
+          user-email: 'abhinandhsuby@proton.me'
+          target-branch: 'main' # Or whichever branch you want to push to
+          commit-message: 'Deploy built assets from Yew project'
+
+      # - name: Upload to Deno Deploy
+        # run: deno deploy --org abhinandh-s --app cma --prod --entrypoint main.ts 
         
          # root: "."
           # Filter which files to exclude in the deployment
