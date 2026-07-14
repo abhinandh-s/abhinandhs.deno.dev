@@ -64,6 +64,9 @@ jobs:
           cp -r pkg build_output/
           cp -r static build_output/
           ls -la
+          ls -la build_output/
+          ls -la build_output/pkg/
+          ls -la build_output/static/
           # If you have an index.html or other assets, copy them too:
           # cp index.html build_output/
           # Clean up unminified files if you don't want them in the new repo
