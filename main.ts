@@ -1,14 +1,14 @@
-import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import { serveDir } from "https://deno.land/std@0.224.0/http/file_server.ts";
 import init, { render } from "./pkg/my_site.mini.js";
 
 // Initialize Wasm
 const wasmUrl = new URL("./pkg/my_site_bg.wasm", import.meta.url);
-await init(wasmUrl);
+const wasmBytes = await Deno.readFile(wasmUrl);
+await init(wasmBytes);
 
 console.log("Server started running...");
 
-serve(async (req) => {
+Deno.serve(async (req) => {
   const url = new URL(req.url);
 
   // Serve static assets (CSS, favicons, json feeds)
@@ -37,8 +37,6 @@ serve(async (req) => {
     const appHtml = await render(url.pathname);
 
     const html = `
- 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,8 +53,8 @@ serve(async (req) => {
     <script type="module">
       import init from "/pkg/my_site.mini.js";
       async function start() {
-      await init("/pkg/my_site_bg.wasm");
-      // The #[wasm_bindgen(start)] in Rust will trigger automatically after this await
+        await init("/pkg/my_site_bg.wasm");
+        // The #[wasm_bindgen(start)] in Rust will trigger automatically after this await
       }
       start();
     </script>
@@ -71,8 +69,6 @@ serve(async (req) => {
   </head>
   <body><div id="app">${appHtml}</div></body>
 </html>
-
-
     `;
 
     return new Response(html, {
