@@ -177,9 +177,9 @@ pub fn theme_switcher() -> Html {
     let stop = Callback::from(|e: MouseEvent| e.stop_propagation());
 
     html! {
-        <div class="relative" onclick={stop}>
+        <div class="relative pr-1.5" onclick={stop}>
 
-            // ── Trigger ──────────────────────────────────────────────────────
+            // -- Trigger
             <button
                 class="theme-switcher-btn"
                 onclick={toggle}
