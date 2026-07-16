@@ -145,7 +145,7 @@ pub fn markdown_to_html(source: &str) -> (Toc, String) {
 
     let mut options = comrak::Options::default();
     options.extension.strikethrough = true;
-    options.extension.header_id_prefix = Some("md-heading-".to_string());
+    options.extension.header_ids = Some("md-heading-".to_string());
     options.extension.alerts = true;
     options.extension.tasklist = true;
     options.extension.spoiler = true;
