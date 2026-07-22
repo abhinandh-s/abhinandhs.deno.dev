@@ -12,7 +12,7 @@ macro_rules! define_genre {
         }
 
         impl Genre {
-            pub fn as_str(&self) -> &'static str {
+            pub const fn as_str(&self) -> &'static str {
                 match self {
                     $(Genre::$variant => stringify!($variant)),*
                 }
@@ -21,9 +21,14 @@ macro_rules! define_genre {
     };
 }
 
+
+       
+   
 macro_rules! img_path {
-    ($name:literal) => {
-        format!("static/movies/{}.avif", $name)
+    ($name:expr) => {
+        // format!("static/movies/{}.avif", $name)
+        // concat gives static str
+        concat!("static/movies/", $name, ".avif")
     };
 }
 
@@ -252,3 +257,53 @@ impl From<Movie> for Html {
         }
     }
 }
+
+
+#[derive(Debug)]
+struct MovieEntry {
+    img: &'static str,
+    title: &'static str,
+    date: &'static str,
+    genre: &'static [Genre],
+    stars: &'static str,
+}
+
+impl From<MovieEntry> for Html {
+    fn from(val: Movie) -> Self {
+        let genre_list = val
+            .genre
+            .iter()
+            .map(|g| g.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        html! {
+          <div class="polaroid_wrapper">
+            <img
+                src={val.img}
+                alt="No Description"
+                loading="lazy"
+          />
+            <div class="polaroid_wrapper_ctx">
+              <h1>{ val.title }</h1>
+              <h4>{ val.date }</h4>
+            </div>
+              <div class="p-1"></div>
+              <p><b>{ "Genre:  " }</b>{ genre_list }</p>
+              <div class="p-1"></div>
+            <p><b>{ "Stars:  " }</b>{val.stars }</p>
+          </div>
+        }
+    }
+}
+
+
+
+const Dune: MovieEntry = MovieEntry {
+    img: img_path!("dune"),
+    title: "Dune: Part One",
+    date: "2021",
+    genre: &[Genre::SiFi, Genre::Epic],
+    stars: "Timothée Chalamet, Rebecca Ferguson, Zendaya",
+};
+
